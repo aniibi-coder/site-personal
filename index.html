@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Personal website in build in desktop style" />
-  <title>My Desktop Portfolio</title>
+  <meta name="description" content="Personal website in a desktop UI style" />
+  <title>Maksim Shmelev — Desktop</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -18,7 +18,7 @@
         <span class="brand__dot" aria-hidden="true"></span>
         <span class="brand__text" id="brandText">hi! i'm …</span>
       </div>
-      <div class="hint" id="hintText">illustrator / developer / …</div>
+      <div class="hint" id="hintText">Marketing / E-commerce</div>
     </div>
 
     <div class="topbar__right">
@@ -40,51 +40,53 @@
 
   <!-- Desktop -->
   <main id="desktop" class="desktop" role="main">
-    <section class="icons" aria-label="Desktop icons">
-      <button class="icon" data-open="about" type="button">
-        <div class="icon__glyph" aria-hidden="true">👋</div>
-        <div class="icon__label">about</div>
-      </button>
 
-      <button class="icon" data-open="links" type="button">
-        <div class="icon__glyph" aria-hidden="true">🔗</div>
-        <div class="icon__label">links</div>
-      </button>
-
-      <button class="icon" data-open="work" type="button">
-        <div class="icon__glyph" aria-hidden="true">🧩</div>
-        <div class="icon__label">work</div>
-      </button>
-
-      <button class="icon" data-open="faq" type="button">
-        <div class="icon__glyph" aria-hidden="true">❓</div>
-        <div class="icon__label">faq</div>
-      </button>
-
-      <button class="icon" data-open="contact" type="button">
-        <div class="icon__glyph" aria-hidden="true">✉️</div>
-        <div class="icon__label">contact</div>
-      </button>
-
-      <button class="icon" data-open="downloads" type="button">
-        <div class="icon__glyph" aria-hidden="true">⬇️</div>
-        <div class="icon__label">downloads</div>
-      </button>
-    </section>
-
-    <!-- Optional little "buddy" -->
+    <!-- Optional little buddy -->
     <section class="buddy" aria-label="Desktop buddy">
       <div class="buddy__card">
-        <div class="buddy__emoji" aria-hidden="true">🐸</div>
+        <img class="buddy__img" src="assets/rat.svg" alt="Rat buddy" />
         <div class="buddy__text">
           <div class="buddy__title">desktop buddy</div>
-          <div class="buddy__subtitle">click icons to open windows</div>
+          <div class="buddy__subtitle">click icons in the dock to open windows</div>
         </div>
       </div>
     </section>
 
     <!-- Windows container -->
     <div id="windows" class="windows" aria-live="polite"></div>
+
+    <!-- Dock (icons bottom-center) -->
+    <nav class="icons" aria-label="Dock">
+      <button class="icon" data-open="about" type="button" title="About">
+        <div class="icon__glyph" aria-hidden="true">👋</div>
+        <div class="icon__label">about</div>
+      </button>
+
+      <button class="icon" data-open="work" type="button" title="Work">
+        <div class="icon__glyph" aria-hidden="true">🧩</div>
+        <div class="icon__label">work</div>
+      </button>
+
+      <button class="icon" data-open="links" type="button" title="Links">
+        <div class="icon__glyph" aria-hidden="true">🔗</div>
+        <div class="icon__label">links</div>
+      </button>
+
+      <button class="icon" data-open="contact" type="button" title="Contact">
+        <div class="icon__glyph" aria-hidden="true">✉️</div>
+        <div class="icon__label">contact</div>
+      </button>
+
+      <button class="icon" data-open="downloads" type="button" title="Downloads">
+        <div class="icon__glyph" aria-hidden="true">⬇️</div>
+        <div class="icon__label">downloads</div>
+      </button>
+
+      <button class="icon" data-open="faq" type="button" title="FAQ">
+        <div class="icon__glyph" aria-hidden="true">❓</div>
+        <div class="icon__label">faq</div>
+      </button>
+    </nav>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -92,3 +94,4 @@
   <script src="./app.js"></script>
 </body>
 </html>
+
