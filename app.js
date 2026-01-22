@@ -223,9 +223,6 @@ const resetLayoutBtn = document.getElementById("resetLayout");
 const brandText = document.getElementById("brandText");
 const hintText = document.getElementById("hintText");
 
-const mobileNotice = document.getElementById("mobileNotice");
-const noticeOk = document.getElementById("noticeOk");
-
 const state = loadState();
 
 /* z-index stacking */
@@ -547,20 +544,9 @@ function escapeHtml(str) {
 function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
 
 /* -------------------------
-   Mobile notice
--------------------------- */
-function maybeShowMobileNotice() {
-  const small = window.matchMedia("(max-width: 860px)").matches;
-  if (!small) return;
-  mobileNotice.hidden = false;
-}
-noticeOk.addEventListener("click", () => (mobileNotice.hidden = true));
-
-/* -------------------------
    Restore open windows
 -------------------------- */
 (function init() {
-  maybeShowMobileNotice();
 
   // restore windows user had open
   const openIds = Object.keys(state.open || {});
