@@ -8,83 +8,120 @@
 const STORAGE_KEY = "desktop_portfolio_v1";
 
 const SITE = {
-  name: "Your Name",
-  tagline: "illustrator / animator / developer",
-  email: "you@example.com",
-  location: "Based in …",
-  languages: ["English", "Русский"],
-  interests: ["game dev", "music", "snowboarding", "…"],
-  socials: [
-    { label: "GitHub", href: "https://github.com/yourname" },
-    { label: "YouTube", href: "https://youtube.com/@yourname" },
-    { label: "Instagram", href: "https://instagram.com/yourname" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yourname" },
+  name: "Maksim SHMELEV",
+  tagline: "Marketing & E-commerce • Data-driven",
+  role: "E-commerce Intern",
+  email: "shmelevmaksim4studies@gmail.com",
+  phone: "07 77 10 15 76",
+  linkedin: "https://www.linkedin.com/in/maksim-shmelev/",
+  location: "France / Bordeaux (open to opportunities)",
+  languages: [
+    { name: "English", level: "IELTS 7.5" },
+    { name: "French", level: "A2" },
   ],
-  tools: ["Figma", "Photoshop", "After Effects", "Blender"],
-  dev: ["JavaScript", "HTML/CSS", "React", "Node.js"],
-  projects: [
+  summary:
+    "Intern with experience in Marketing & E-commerce. Strong in working with data, analyzing campaign performance, optimizing funnels, and improving customer experience.",
+  skills: [
+    "Excel / Office / PowerPoint (reporting & analytics)",
+    "Campaign performance analysis & optimization",
+    "Customer funnel + engagement tracking",
+    "User feedback analysis (reviews, retention, satisfaction)",
+    "Detailed planning (Calendar / Notion / Teams)",
+    "AI tools: ChatGPT, Grok, Gemini (daily workflow)",
+    "Figma / Photoshop / DaVinci Resolve / Premiere Pro",
+  ],
+  experience: [
     {
-      title: "Project One",
-      meta: "2026 • web app",
-      desc: "Коротко: что это и какой результат.",
-      tags: ["frontend", "design"],
-      links: [
-        { label: "Live", href: "https://example.com" },
-        { label: "Repo", href: "https://github.com/yourname/project" },
+      title: "E-commerce Intern",
+      company: "Socialist",
+      place: "Moscow, Russia",
+      dates: "Oct 2024 — Feb 2025",
+      bullets: [
+        "Analyzed and collected product data; prepared weekly performance reports",
+        "Monitored customer engagement and conversion across the sales funnel",
+        "Analyzed customer feedback and reviews to assess satisfaction and improvement areas",
+        "Helped publish new products and set up advertising campaigns",
+        "Managed pricing levels using performance metrics and competitor analysis",
       ],
     },
     {
-      title: "Project Two",
-      meta: "2025 • animation",
-      desc: "Коротко: что ты сделал(а).",
-      tags: ["animation", "2D"],
-      links: [{ label: "Watch", href: "https://youtube.com/" }],
+      title: "Product Manager",
+      company: "Fuh!",
+      place: "Moscow, Russia",
+      dates: "Feb 2025 — Aug 2025",
+      bullets: [
+        "Planned advertising activities for a subscription-based psychological service startup",
+        "Created brand book and contributed to product positioning",
+        "Worked on product development, analyzed performance and user problems",
+        "Collected and reviewed early user feedback after beta testing",
+        "Analyzed engagement and retention during subscription launch",
+        "Collaborated with the team to improve the product and personalize customer experience",
+      ],
     },
   ],
-  downloads: [
+  education: [
     {
-      title: "Wallpaper Pack",
-      meta: "PNG • free for personal use",
-      desc: "Ссылка на zip или папку.",
-      href: "#",
+      title: "Brand & Product Management (Master)",
+      org: "KEDGE Business School, Bordeaux",
+      dates: "Since Sep 2025",
+      bullets: [
+        "Public speaking",
+        "Digital marketing",
+        "Financial performance",
+        "Customer behavior pattern analysis",
+      ],
     },
     {
-      title: "Sticker Pack",
-      meta: "PNG • free for personal use",
-      desc: "Ещё один айтем.",
-      href: "#",
+      title: "Management in Organizations (Bachelor)",
+      org: "Plekhanov Russian University of Economics, Moscow",
+      dates: "Sep 2021 — Aug 2025",
+      bullets: [
+        "Program taught fully in English",
+        "Financial / Management / Marketing skills",
+        "Entrepreneurship program participation",
+      ],
     },
   ],
+  certifications: [
+    {
+      title: "Marketplace Manager — Professional Training Course (256h)",
+      org: "Yandex Practicum",
+      date: "Jul 2024",
+      bullets: ["Marketplace data analysis", "E-commerce fundamentals", "Media planning & ad management"],
+    },
+    {
+      title: "Google Digital Marketing & E-commerce",
+      org: "Google",
+      date: "Jun 2024",
+      bullets: ["Marketing basics", "Digital marketing"],
+    },
+  ],
+  socials: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/maksim-shmelev/" },
+  ],
+  cvUrl: "assets/CV_2026-01-22_Maksim_Shmelev.pdf",
 };
 
 const WINDOWS = {
   about: {
     title: "about",
-    w: 560,
-    h: 520,
+    w: 620,
+    h: 560,
     html: () => `
       <h2>hi! i'm ${escapeHtml(SITE.name)}</h2>
-      <p><span class="kbd">${escapeHtml(SITE.tagline)}</span></p>
+      <p><span class="kbd">${escapeHtml(SITE.role)}</span> · <span class="kbd">${escapeHtml(SITE.tagline)}</span></p>
+      <p style="margin-top:10px;color:var(--muted)">${escapeHtml(SITE.summary)}</p>
 
       <div class="hr"></div>
 
-      <p>${escapeHtml(SITE.location)}</p>
-
-      <h3>what i do</h3>
+      <h3>skills</h3>
       <ul>
-        <li>illustration / animation / web dev</li>
-        <li>website wireframes & UI</li>
-        <li>frontend development</li>
+        ${SITE.skills.map(s => `<li>${escapeHtml(s)}</li>`).join("")}
       </ul>
 
       <h3>languages</h3>
       <div class="pills">
-        ${SITE.languages.map(l => `<span class="pill">${escapeHtml(l)}</span>`).join("")}
-      </div>
-
-      <h3>other interests</h3>
-      <div class="pills">
-        ${SITE.interests.map(i => `<span class="pill">${escapeHtml(i)}</span>`).join("")}
+        ${SITE.languages.map(l => `<span class="pill">${escapeHtml(l.name)} · ${escapeHtml(l.level)}</span>`).join("")}
       </div>
 
       <div class="hr"></div>
@@ -92,64 +129,122 @@ const WINDOWS = {
     `,
   },
 
-  links: {
-    title: "links",
-    w: 520,
-    h: 460,
+  work: {
+    title: "work",
+    w: 720,
+    h: 600,
     html: () => `
-      <h2>links</h2>
-      <p>Clicking any link opens a new tab.</p>
+      <h2>work experience</h2>
+      <div class="cards">
+        ${SITE.experience.map(job => `
+          <div class="card">
+            <div class="card__title">${escapeHtml(job.title)} · ${escapeHtml(job.company)}</div>
+            <div class="card__meta">${escapeHtml(job.place)} · ${escapeHtml(job.dates)}</div>
+            <ul>
+              ${job.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}
+            </ul>
+          </div>
+        `).join("")}
+      </div>
+
       <div class="hr"></div>
 
+      <h3>education</h3>
       <div class="cards">
-        ${SITE.socials.map(s => `
+        ${SITE.education.map(ed => `
           <div class="card">
-            <div class="card__title">${escapeHtml(s.label)}</div>
-            <div class="card__meta">${escapeHtml(s.href)}</div>
-            <a href="${escapeAttr(s.href)}" target="_blank" rel="noopener">open</a>
+            <div class="card__title">${escapeHtml(ed.title)}</div>
+            <div class="card__meta">${escapeHtml(ed.org)} · ${escapeHtml(ed.dates)}</div>
+            <ul>
+              ${ed.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}
+            </ul>
+          </div>
+        `).join("")}
+      </div>
+
+      <h3>certifications</h3>
+      <div class="cards">
+        ${SITE.certifications.map(c => `
+          <div class="card">
+            <div class="card__title">${escapeHtml(c.title)}</div>
+            <div class="card__meta">${escapeHtml(c.org)} · ${escapeHtml(c.date)}</div>
+            <ul>
+              ${c.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join("")}
+            </ul>
           </div>
         `).join("")}
       </div>
     `,
   },
 
-  work: {
-    title: "work",
-    w: 640,
-    h: 560,
+  links: {
+    title: "links",
+    w: 520,
+    h: 480,
     html: () => `
-      <h2>work</h2>
-      <p>Accepting work offers via email: <a href="mailto:${escapeAttr(SITE.email)}">${escapeHtml(SITE.email)}</a></p>
+      <h2>links</h2>
+      <div class="hr"></div>
 
-      <h3>tools</h3>
-      <div class="pills">
-        ${SITE.tools.map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("")}
+      <div class="cards">
+        <div class="card">
+          <div class="card__title">LinkedIn</div>
+          <div class="card__meta">@maksim-shmelev</div>
+          <a href="${escapeAttr(SITE.linkedin)}" target="_blank" rel="noopener">open</a>
+        </div>
+
+        <div class="card">
+          <div class="card__title">Email</div>
+          <div class="card__meta">${escapeHtml(SITE.email)}</div>
+          <a href="mailto:${escapeAttr(SITE.email)}">write</a>
+        </div>
+
+        <div class="card">
+          <div class="card__title">CV (PDF)</div>
+          <div class="card__meta">${escapeHtml(SITE.cvUrl)}</div>
+          <a href="${escapeAttr(SITE.cvUrl)}" target="_blank" rel="noopener">open</a>
+        </div>
       </div>
+    `,
+  },
 
-      <h3>development</h3>
-      <div class="pills">
-        ${SITE.dev.map(d => `<span class="pill">${escapeHtml(d)}</span>`).join("")}
+  contact: {
+    title: "contact",
+    w: 520,
+    h: 440,
+    html: () => `
+      <h2>contact</h2>
+      <p>Best way to reach me — email.</p>
+      <div class="hr"></div>
+
+      <p><strong>Email:</strong> <a href="mailto:${escapeAttr(SITE.email)}">${escapeHtml(SITE.email)}</a></p>
+      <p><strong>Phone:</strong> <a href="tel:${escapeAttr(SITE.phone.replace(/\s+/g,''))}">${escapeHtml(SITE.phone)}</a></p>
+      <p><strong>LinkedIn:</strong> <a href="${escapeAttr(SITE.linkedin)}" target="_blank" rel="noopener">@maksim-shmelev</a></p>
+
+      <div class="hr"></div>
+      <a class="btnlink" href="mailto:${escapeAttr(SITE.email)}?subject=Hello%20from%20your%20website" target="_self">Open mail app</a>
+    `,
+  },
+
+  downloads: {
+    title: "downloads",
+    w: 640,
+    h: 520,
+    html: () => `
+      <h2>downloads</h2>
+      <p>CV and other files.</p>
+      <div class="hr"></div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card__title">CV — Maksim SHMELEV</div>
+          <div class="card__meta">PDF</div>
+          <p>Download the latest version of my CV.</p>
+          <a href="${escapeAttr(SITE.cvUrl)}" target="_blank" rel="noopener">open</a>
+        </div>
       </div>
 
       <div class="hr"></div>
-
-      <h3>projects</h3>
-      <div class="cards">
-        ${SITE.projects.map(p => `
-          <div class="card">
-            <div class="card__title">${escapeHtml(p.title)}</div>
-            <div class="card__meta">${escapeHtml(p.meta)}</div>
-            <p>${escapeHtml(p.desc)}</p>
-            <div class="pills">
-              ${(p.tags || []).map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("")}
-            </div>
-            <div class="hr"></div>
-            ${(p.links || []).map(l => `
-              <a href="${escapeAttr(l.href)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>
-            `).join(" · ")}
-          </div>
-        `).join("")}
-      </div>
+      <p style="color:var(--muted);font-family:var(--mono);font-size:12px">Tip: to make the CV link work on GitHub Pages, keep the PDF at <span class="kbd">assets/</span>.</p>
     `,
   },
 
@@ -163,49 +258,11 @@ const WINDOWS = {
       <h3>Do you check DMs?</h3>
       <p>Usually no — email is best.</p>
 
-      <h3>Can I use your downloads?</h3>
-      <p>Yes for personal use (replace this text with your terms).</p>
+      <h3>What roles are you interested in?</h3>
+      <p>Marketing / E-commerce internships (data-driven) and product / growth roles.</p>
 
-      <h3>What stack do you use?</h3>
-      <p>${escapeHtml(SITE.dev.join(", "))}</p>
-    `,
-  },
-
-  contact: {
-    title: "contact",
-    w: 520,
-    h: 420,
-    html: () => `
-      <h2>yayy mail!</h2>
-      <p>Самый простой способ связаться — email.</p>
-      <div class="hr"></div>
-
-      <p><strong>Email:</strong> <a href="mailto:${escapeAttr(SITE.email)}">${escapeHtml(SITE.email)}</a></p>
-
-      <div class="hr"></div>
-      <a class="btnlink" href="mailto:${escapeAttr(SITE.email)}?subject=Hello%20from%20your%20website" target="_self">Open mail app</a>
-    `,
-  },
-
-  downloads: {
-    title: "downloads",
-    w: 640,
-    h: 560,
-    html: () => `
-      <h2>downloads</h2>
-      <p>Free downloadable content (personal use). Replace with your links.</p>
-      <div class="hr"></div>
-
-      <div class="cards">
-        ${SITE.downloads.map(d => `
-          <div class="card">
-            <div class="card__title">${escapeHtml(d.title)}</div>
-            <div class="card__meta">${escapeHtml(d.meta)}</div>
-            <p>${escapeHtml(d.desc)}</p>
-            <a href="${escapeAttr(d.href)}" target="_blank" rel="noopener">download</a>
-          </div>
-        `).join("")}
-      </div>
+      <h3>What tools do you use?</h3>
+      <p>${escapeHtml(SITE.skills.slice(0,6).join(" · "))}</p>
     `,
   },
 };
@@ -265,7 +322,7 @@ function beep(freq = 560, durationMs = 30, gainVal = 0.03) {
 }
 
 /* -------------------------
-   Desktop icons click
+   Dock icons click
 -------------------------- */
 document.querySelectorAll(".icon[data-open]").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -295,17 +352,23 @@ sfxToggle.addEventListener("click", () => {
 resetLayoutBtn.addEventListener("click", () => {
   state.layout = {};
   saveState();
-  // Move all open windows to defaults (nice cascade)
+
   const ids = Object.keys(state.open || {});
-  let x = 260, y = 110;
+  let offset = 0;
   ids.forEach((id) => {
     const w = document.getElementById(`win-${id}`);
     if (!w) return;
-    w.style.left = `${x}px`;
-    w.style.top = `${y}px`;
-    x += 24; y += 24;
+
+    const rect = getInitialRect(id, WINDOWS[id] || { w: 560, h: 520 }, offset);
+    w.style.left = `${rect.x}px`;
+    w.style.top = `${rect.y}px`;
+    w.style.width = `${rect.w}px`;
+    w.style.height = `${rect.h}px`;
+
     rememberWindowRect(id, w);
+    offset += 1;
   });
+
   beep(520, 50);
   toast("Layout reset");
 });
@@ -356,6 +419,8 @@ function openWindow(id) {
   state.open[id] = true;
   saveState();
 
+  markIconOpen(id, true);
+
   // Close button
   win.querySelector(".winbtn--close").addEventListener("click", () => closeWindow(id));
 
@@ -375,6 +440,7 @@ function closeWindow(id) {
   win.remove();
   delete state.open[id];
   saveState();
+  markIconOpen(id, false);
   beep(380, 35);
 }
 
@@ -403,7 +469,6 @@ function enableDrag(win, id) {
   let winX = 0, winY = 0;
 
   const onDown = (e) => {
-    // ignore clicks on buttons inside titlebar
     if (e.target && e.target.closest("button")) return;
 
     dragging = true;
@@ -424,7 +489,6 @@ function enableDrag(win, id) {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
 
-    // clamp inside viewport a bit
     const maxX = window.innerWidth - 80;
     const maxY = window.innerHeight - 60;
 
@@ -456,20 +520,30 @@ function rememberWindowRect(id, win) {
   saveState();
 }
 
-function getInitialRect(id, def) {
-  // layout stored?
+function getInitialRect(id, def, cascadeIndex = null) {
   const saved = state.layout[id];
   if (saved) return saved;
-
-  // cascade default
-  const openedCount = Object.keys(state.open).length;
-  const x = 260 + openedCount * 22;
-  const y = 110 + openedCount * 22;
 
   const w = def.w || 560;
   const h = def.h || 520;
 
+  const openedCount = cascadeIndex !== null ? cascadeIndex : Object.keys(state.open).length;
+  const baseX = Math.round((window.innerWidth - w) / 2);
+  const baseY = 120;
+
+  const x = clamp(baseX + openedCount * 22, 10, Math.max(10, window.innerWidth - w - 10));
+  const y = clamp(baseY + openedCount * 22, 68, Math.max(68, window.innerHeight - h - 70));
+
   return { x, y, w, h };
+}
+
+/* -------------------------
+   Dock open indicator
+-------------------------- */
+function markIconOpen(id, isOpen) {
+  const icon = document.querySelector(`.icon[data-open="${CSS.escape(id)}"]`);
+  if (!icon) return;
+  icon.classList.toggle("is-open", !!isOpen);
 }
 
 /* -------------------------
@@ -547,11 +621,11 @@ function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
    Restore open windows
 -------------------------- */
 (function init() {
-
-  // restore windows user had open
   const openIds = Object.keys(state.open || {});
   openIds.forEach((id) => openWindow(id));
 
-  // if none open, open "about" by default
   if (openIds.length === 0) openWindow("about");
+
+  // ensure dock indicators match
+  Object.keys(state.open || {}).forEach((id) => markIconOpen(id, true));
 })();
