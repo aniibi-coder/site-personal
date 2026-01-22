@@ -70,28 +70,10 @@ body {
     linear-gradient(135deg, var(--bg1), var(--bg2));
   z-index: -2;
 }
-  /* subtle animated color drift */
-  background-size: 200% 200%, 220% 220%, 210% 210%, 180% 180%, 100% 100%;
-  background-position: 0% 0%, 100% 0%, 50% 100%, 50% 50%, 0% 0%;
-  animation: wallpaper-drift 22s ease-in-out infinite alternate;
-  will-change: background-position;
-}
 
-
-:root[data-theme="light"] #wallpaper{
-  /* warm pastel blobs for light theme */
-  background:
-    radial-gradient(1200px 820px at 18% 22%, rgba(255,128,118,.18), transparent 58%),
-    radial-gradient(980px 680px at 72% 30%, rgba(255,206,148,.16), transparent 58%),
-    radial-gradient(1200px 920px at 58% 80%, rgba(255,160,210,.12), transparent 62%),
-    radial-gradient(1100px 900px at 55% 50%, rgba(0,0,0,.10), transparent 70%),
-    linear-gradient(135deg, var(--bg1), var(--bg2));
-}
 
 /* ambient particles / paper grain */
 #wallpaper::before{
-  animation: grain-drift 14s ease-in-out infinite alternate;
-  will-change: opacity, background-position;
   content:"";
   position:absolute;
   inset:0;
@@ -108,8 +90,6 @@ body {
   mix-blend-mode: screen;
 }
 :root[data-theme="light"] #wallpaper::before{
-  animation: grain-drift 14s ease-in-out infinite alternate;
-  will-change: opacity, background-position;
   background-image:
     radial-gradient(circle, rgba(0,0,0,.07) 0 1px, transparent 1.2px),
     radial-gradient(circle, rgba(0,0,0,.05) 0 1px, transparent 1.2px),
@@ -637,41 +617,194 @@ button.buddy__card:active{
 
 
 
-/* -------------------------
-   Animated wallpaper drift
--------------------------- */
+/* =========================================================
+   Animated wallpaper (v2) — more visible in LIGHT theme
+   - Light: warm pastel blobs that gently "breathe"
+   - Dark: cool drift stays subtle
+   ========================================================= */
+
+#wallpaper{
+  /* make background movement visible */
+  background-size: 240% 240%, 260% 260%, 240% 240%, 210% 210%, 100% 100%;
+  background-position: 0% 0%, 100% 0%, 40% 100%, 50% 50%, 0% 0%;
+  animation: wallpaper-drift 14s ease-in-out infinite alternate;
+  will-change: background-position;
+}
+
+/* LIGHT: warm, readable blobs + slightly faster drift */
+:root[data-theme="light"] #wallpaper{
+  background:
+    radial-gradient(1300px 900px at 14% 18%, rgba(255,100,90,.34), transparent 55%),
+    radial-gradient(1100px 780px at 74% 24%, rgba(255,205,120,.28), transparent 55%),
+    radial-gradient(1300px 950px at 62% 86%, rgba(255,140,200,.24), transparent 60%),
+    radial-gradient(1200px 900px at 48% 52%, rgba(0,0,0,.12), transparent 72%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  animation-duration: 10.5s;
+  filter: saturate(1.18);
+}
+
+/* Grain/particles: drift for both themes */
+#wallpaper::before{
+  animation: grain-drift 16s ease-in-out infinite alternate;
+  will-change: opacity, background-position;
+}
+
+/* LIGHT: warm "breathing" spots on top (visible but still soft) */
+:root[data-theme="light"] #wallpaper::before{
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,.07) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(0,0,0,.05) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(0,0,0,.04) 0 1px, transparent 1.2px),
+    radial-gradient(980px 720px at 12% 78%, rgba(255,100,90,.22), transparent 62%),
+    radial-gradient(980px 760px at 88% 18%, rgba(255,140,200,.18), transparent 62%);
+  background-size: 240px 240px, 360px 360px, 520px 520px, auto, auto;
+  background-position: 0 0, 120px 80px, 60px 160px, 0 0, 0 0;
+  mix-blend-mode: multiply;
+  opacity: .28;
+  animation: grain-drift 12.5s ease-in-out infinite alternate, light-breathe 5.6s ease-in-out infinite alternate;
+}
+
+/* LIGHT: keep grid calm */
+:root[data-theme="light"] #wallpaper::after{
+  opacity: .42;
+}
+
+/* Keyframes */
 @keyframes wallpaper-drift{
   0%{
-    background-position: 0% 0%, 100% 0%, 50% 100%, 50% 50%, 0% 0%;
+    background-position: 0% 0%, 100% 0%, 40% 100%, 50% 50%, 0% 0%;
   }
   50%{
-    background-position: 18% 10%, 82% 18%, 44% 86%, 56% 46%, 0% 0%;
+    background-position: 18% 12%, 82% 18%, 52% 88%, 58% 46%, 0% 0%;
   }
   100%{
-    background-position: 10% 22%, 92% 8%, 62% 94%, 44% 58%, 0% 0%;
+    background-position: 10% 26%, 92% 8%, 66% 96%, 44% 60%, 0% 0%;
   }
 }
 
 @keyframes grain-drift{
   0%{
-    opacity: .52;
+    opacity: .55;
     background-position: 0 0, 120px 80px, 60px 160px, 0 0, 0 0;
   }
   100%{
-    opacity: .62;
-    background-position: 48px 26px, 168px 122px, 108px 208px, 0 0, 0 0;
+    opacity: .65;
+    background-position: 54px 34px, 184px 138px, 118px 236px, 0 0, 0 0;
   }
 }
 
-/* Softer motion & lower grain in light theme */
-:root[data-theme="light"] #wallpaper::before{
-  animation-duration: 18s;
-  opacity: .18;
+@keyframes light-breathe{
+  0%{ opacity: .22; }
+  100%{ opacity: .34; }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce){
   #wallpaper, #wallpaper::before{
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   Animated wallpaper (v3) — requested tweaks
+   - LIGHT: remove dark blob, make warm blobs clearly move
+   - DARK: introduce purple/violet palette with gentle drift
+   ========================================================= */
+
+/* Use separate drift animations per theme (more noticeable in light) */
+:root[data-theme="light"] #wallpaper{
+  /* warm pastel blobs (NO dark spot) */
+  background:
+    radial-gradient(1300px 900px at 14% 18%, rgba(255,100,90,.36), transparent 55%),
+    radial-gradient(1100px 780px at 74% 24%, rgba(255,205,120,.30), transparent 55%),
+    radial-gradient(1300px 950px at 62% 86%, rgba(255,140,200,.26), transparent 60%),
+    radial-gradient(1200px 900px at 46% 52%, rgba(255,240,220,.22), transparent 72%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  animation-name: wallpaper-drift-light;
+  animation-duration: 9.4s;
+  filter: saturate(1.22);
+}
+
+/* Make light blobs drift a bit more (so it’s visible) */
+@keyframes wallpaper-drift-light{
+  0%{
+    background-position: 6% 4%, 92% 6%, 36% 96%, 48% 50%, 0% 0%;
+  }
+  50%{
+    background-position: 24% 16%, 76% 22%, 54% 84%, 56% 44%, 0% 0%;
+  }
+  100%{
+    background-position: 12% 30%, 98% 10%, 68% 98%, 42% 62%, 0% 0%;
+  }
+}
+
+/* DARK: purple / violet / deep blue palette */
+:root[data-theme="dark"] #wallpaper{
+  background:
+    radial-gradient(1200px 840px at 18% 18%, rgba(176,96,255,.22), transparent 58%),
+    radial-gradient(1000px 760px at 78% 22%, rgba(112,132,255,.18), transparent 60%),
+    radial-gradient(1300px 980px at 64% 86%, rgba(210,120,255,.14), transparent 62%),
+    radial-gradient(1150px 900px at 44% 52%, rgba(60,20,90,.22), transparent 70%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  animation-name: wallpaper-drift-dark;
+  animation-duration: 16s;
+  filter: saturate(1.10);
+}
+
+@keyframes wallpaper-drift-dark{
+  0%{
+    background-position: 0% 0%, 100% 0%, 45% 100%, 50% 50%, 0% 0%;
+  }
+  50%{
+    background-position: 12% 10%, 86% 16%, 56% 88%, 54% 46%, 0% 0%;
+  }
+  100%{
+    background-position: 8% 22%, 94% 8%, 64% 96%, 44% 58%, 0% 0%;
+  }
+}
+
+/* LIGHT: also move the warm overlay spots in ::before (they were static at 0 0) */
+:root[data-theme="light"] #wallpaper::before{
+  /* keep your grains + warm overlays */
+  animation: grain-drift-v3 12.2s ease-in-out infinite alternate, light-breathe 5.2s ease-in-out infinite alternate;
+  opacity: .30;
+}
+
+/* Replace grain drift with a version that also moves the last two (warm overlay) layers */
+@keyframes grain-drift-v3{
+  0%{
+    opacity: .54;
+    background-position:
+      0 0,
+      120px 80px,
+      60px 160px,
+      10% 80%,
+      90% 20%;
+  }
+  100%{
+    opacity: .66;
+    background-position:
+      56px 36px,
+      186px 142px,
+      118px 238px,
+      22% 74%,
+      78% 28%;
+  }
+}
+
+/* Use v3 grain drift for dark too (subtle) */
+:root[data-theme="dark"] #wallpaper::before{
+  animation: grain-drift-v3 18s ease-in-out infinite alternate;
+  opacity: .58;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce){
+  :root[data-theme="light"] #wallpaper,
+  :root[data-theme="dark"] #wallpaper,
+  :root[data-theme="light"] #wallpaper::before,
+  :root[data-theme="dark"] #wallpaper::before{
     animation: none !important;
   }
 }
