@@ -293,6 +293,47 @@ applyTheme(state.theme);
 applySfx(state.sfx);
 
 /* -------------------------
+   Classical music rat (play/pause)
+-------------------------- */
+const ratCard = document.getElementById("ratCard");
+const RAT_TRACK = "./Andante.mp3"; // put Andante.mp3 next to index.html (root)
+let ratAudio = null;
+
+function ensureRatAudio(){
+  if (ratAudio) return ratAudio;
+  ratAudio = new Audio(RAT_TRACK);
+  ratAudio.preload = "auto";
+  ratAudio.loop = true;
+  ratAudio.addEventListener("play", () => setRatPlaying(true));
+  ratAudio.addEventListener("pause", () => setRatPlaying(false));
+  return ratAudio;
+}
+
+function setRatPlaying(on){
+  if (!ratCard) return;
+  ratCard.classList.toggle("is-playing", !!on);
+  ratCard.setAttribute("aria-pressed", on ? "true" : "false");
+}
+
+if (ratCard){
+  ratCard.addEventListener("click", async () => {
+    const a = ensureRatAudio();
+    try{
+      if (a.paused){
+        await a.play();
+        toast("♪ Andante — playing");
+      } else {
+        a.pause();
+        toast("Andante — paused");
+      }
+    } catch (e){
+      // Usually autoplay permission; user gesture already happened, but just in case.
+      toast("Audio blocked — tap again");
+    }
+  });
+}
+
+/* -------------------------
    Audio (tiny click beep)
 -------------------------- */
 let audioCtx = null;
@@ -344,6 +385,47 @@ themeToggle.addEventListener("click", () => {
 sfxToggle.addEventListener("click", () => {
   state.sfx = !state.sfx;
   applySfx(state.sfx);
+
+/* -------------------------
+   Classical music rat (play/pause)
+-------------------------- */
+const ratCard = document.getElementById("ratCard");
+const RAT_TRACK = "./Andante.mp3"; // put Andante.mp3 next to index.html (root)
+let ratAudio = null;
+
+function ensureRatAudio(){
+  if (ratAudio) return ratAudio;
+  ratAudio = new Audio(RAT_TRACK);
+  ratAudio.preload = "auto";
+  ratAudio.loop = true;
+  ratAudio.addEventListener("play", () => setRatPlaying(true));
+  ratAudio.addEventListener("pause", () => setRatPlaying(false));
+  return ratAudio;
+}
+
+function setRatPlaying(on){
+  if (!ratCard) return;
+  ratCard.classList.toggle("is-playing", !!on);
+  ratCard.setAttribute("aria-pressed", on ? "true" : "false");
+}
+
+if (ratCard){
+  ratCard.addEventListener("click", async () => {
+    const a = ensureRatAudio();
+    try{
+      if (a.paused){
+        await a.play();
+        toast("♪ Andante — playing");
+      } else {
+        a.pause();
+        toast("Andante — paused");
+      }
+    } catch (e){
+      // Usually autoplay permission; user gesture already happened, but just in case.
+      toast("Audio blocked — tap again");
+    }
+  });
+}
   saveState();
   beep(440, 40);
   toast(state.sfx ? "SFX: on" : "SFX: off");
@@ -429,6 +511,7 @@ function openWindow(id) {
 
   // Drag
   enableDrag(win, id);
+  enableResizePersistence(win, id);
 
   focusWindow(id, win);
   beep(740, 28);
@@ -437,6 +520,7 @@ function openWindow(id) {
 function closeWindow(id) {
   const win = document.getElementById(`win-${id}`);
   if (!win) return;
+  disableResizePersistence(id);
   win.remove();
   delete state.open[id];
   saveState();
@@ -456,6 +540,30 @@ window.addEventListener("keydown", (e) => {
     activeWindowId = null;
   }
 });
+
+/* -------------------------
+   Resizing (persist width/height via ResizeObserver)
+-------------------------- */
+const _resizeObservers = new Map();
+
+function enableResizePersistence(win, id){
+  try{
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      // save pos + size (debounced by rAF)
+      rememberWindowRect(id, win);
+    });
+    ro.observe(win);
+    _resizeObservers.set(id, ro);
+  } catch (_) {}
+}
+
+function disableResizePersistence(id){
+  const ro = _resizeObservers.get(id);
+  if (!ro) return;
+  try{ ro.disconnect(); } catch(_){}
+  _resizeObservers.delete(id);
+}
 
 /* -------------------------
    Dragging
