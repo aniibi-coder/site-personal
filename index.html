@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Персональный сайт-портфолио в стиле desktop UI" />
+  <title>My Desktop Portfolio</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div id="wallpaper" aria-hidden="true"></div>
+
+  <!-- Top controls -->
+  <header class="topbar" role="banner">
+    <div class="topbar__left">
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__text" id="brandText">hi! i'm …</span>
+      </div>
+      <div class="hint" id="hintText">illustrator / developer / …</div>
+    </div>
+
+    <div class="topbar__right">
+      <button class="toggle" id="themeToggle" type="button" aria-pressed="false" title="Toggle theme">
+        <span class="toggle__icon" aria-hidden="true">☾</span>
+        <span class="toggle__label">Dark</span>
+      </button>
+
+      <button class="toggle" id="sfxToggle" type="button" aria-pressed="false" title="Toggle sound effects">
+        <span class="toggle__icon" aria-hidden="true">♪</span>
+        <span class="toggle__label">SFX</span>
+      </button>
+
+      <button class="btn" id="resetLayout" type="button" title="Reset window positions">
+        Reset
+      </button>
+    </div>
+  </header>
+
+  <!-- Desktop -->
+  <main id="desktop" class="desktop" role="main">
+    <section class="icons" aria-label="Desktop icons">
+      <button class="icon" data-open="about" type="button">
+        <div class="icon__glyph" aria-hidden="true">👋</div>
+        <div class="icon__label">about</div>
+      </button>
+
+      <button class="icon" data-open="links" type="button">
+        <div class="icon__glyph" aria-hidden="true">🔗</div>
+        <div class="icon__label">links</div>
+      </button>
+
+      <button class="icon" data-open="work" type="button">
+        <div class="icon__glyph" aria-hidden="true">🧩</div>
+        <div class="icon__label">work</div>
+      </button>
+
+      <button class="icon" data-open="faq" type="button">
+        <div class="icon__glyph" aria-hidden="true">❓</div>
+        <div class="icon__label">faq</div>
+      </button>
+
+      <button class="icon" data-open="contact" type="button">
+        <div class="icon__glyph" aria-hidden="true">✉️</div>
+        <div class="icon__label">contact</div>
+      </button>
+
+      <button class="icon" data-open="downloads" type="button">
+        <div class="icon__glyph" aria-hidden="true">⬇️</div>
+        <div class="icon__label">downloads</div>
+      </button>
+    </section>
+
+    <!-- Optional little "buddy" -->
+    <section class="buddy" aria-label="Desktop buddy">
+      <div class="buddy__card">
+        <div class="buddy__emoji" aria-hidden="true">🐸</div>
+        <div class="buddy__text">
+          <div class="buddy__title">desktop buddy</div>
+          <div class="buddy__subtitle">click icons to open windows</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Windows container -->
+    <div id="windows" class="windows" aria-live="polite"></div>
+  </main>
+
+  <!-- Mobile notice -->
+  <div class="notice" id="mobileNotice" hidden>
+    <div class="notice__panel" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+      <div class="notice__title" id="noticeTitle">Heads up</div>
+      <p class="notice__text">
+        Этот сайт лучше ощущается на desktop (перетаскиваемые окна).
+        Но на телефоне тоже будет работать 🙂
+      </p>
+      <button class="btn" id="noticeOk" type="button">OK</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
