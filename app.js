@@ -739,56 +739,87 @@ function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
 })();
 
 /* -------------------------
-   Eyes (follow cursor)
+   Eyes (follow cursor) — SVG pupils
 -------------------------- */
 (function initEyes(){
   const watcher = document.getElementById("watcher");
-  if (!watcher) return;
+  const svg = document.getElementById("eyesSvg");
+  if (!watcher || !svg) return;
 
-  const eyes = Array.from(watcher.querySelectorAll(".eye")).map((eye) => ({
-    eye,
-    pupil: eye.querySelector(".pupil"),
-  }));
+  const pupilL = document.getElementById("pupilL");
+  const pupilR = document.getElementById("pupilR");
+  const shineL = document.getElementById("shineL");
+  const shineR = document.getElementById("shineR");
+  if (!pupilL || !pupilR) return;
 
-  let targetX = window.innerWidth / 2;
-  let targetY = window.innerHeight / 2;
+  // Base centers in SVG units (match cx/cy in index.html)
+  const base = {
+    L: { x: 60,  y: 40 },
+    R: { x: 180, y: 40 },
+  };
+
+  // Max travel inside eye (SVG units)
+  const MAX = 10;
+
+  let targetClient = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let raf = null;
 
-  function update(){
-    raf = null;
-    for (const { eye, pupil } of eyes){
-      if (!pupil) continue;
+  function clientToSvgPoint(clientX, clientY){
+    const pt = svg.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const ctm = svg.getScreenCTM();
+    if (!ctm) return { x: 120, y: 40 };
+    const inv = ctm.inverse();
+    const sp = pt.matrixTransform(inv);
+    return { x: sp.x, y: sp.y };
+  }
 
-      const r = eye.getBoundingClientRect();
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
+  function movePupil(pupil, shine, center, target){
+    const dx = target.x - center.x;
+    const dy = target.y - center.y;
+    const dist = Math.hypot(dx, dy) || 1;
 
-      const dx = targetX - cx;
-      const dy = targetY - cy;
+    // Natural movement: farther cursor -> slightly more movement, but clamped
+    const travel = Math.min(MAX, dist * 0.12);
 
-      const angle = Math.atan2(dy, dx);
-      const max = Math.min(r.width, r.height) * 0.22;
-      const dist = Math.min(max, Math.hypot(dx, dy) * 0.06);
+    const nx = (dx / dist) * travel;
+    const ny = (dy / dist) * travel;
 
-      const tx = Math.cos(angle) * dist;
-      const ty = Math.sin(angle) * dist;
+    const cx = center.x + nx;
+    const cy = center.y + ny;
 
-      pupil.style.transform = `translate(calc(-50% + ${tx.toFixed(2)}px), calc(-50% + ${ty.toFixed(2)}px))`;
+    pupil.setAttribute("cx", cx.toFixed(2));
+    pupil.setAttribute("cy", cy.toFixed(2));
+
+    // Optional tiny shine offset (kept subtle)
+    if (shine){
+      shine.setAttribute("cx", (cx - 5).toFixed(2));
+      shine.setAttribute("cy", (cy - 5).toFixed(2));
     }
   }
 
-  function onPointerMove(e){
+  function update(){
+    raf = null;
+    const t = clientToSvgPoint(targetClient.x, targetClient.y);
+
+    movePupil(pupilL, shineL, base.L, t);
+    movePupil(pupilR, shineR, base.R, t);
+  }
+
+  function onMove(e){
     const p = e.touches ? e.touches[0] : e;
     if (!p) return;
-    targetX = p.clientX;
-    targetY = p.clientY;
+    targetClient.x = p.clientX;
+    targetClient.y = p.clientY;
     if (!raf) raf = requestAnimationFrame(update);
   }
 
-  window.addEventListener("mousemove", onPointerMove, { passive: true });
-  window.addEventListener("touchstart", onPointerMove, { passive: true });
-  window.addEventListener("touchmove", onPointerMove, { passive: true });
+  window.addEventListener("mousemove", onMove, { passive: true });
+  window.addEventListener("touchstart", onMove, { passive: true });
+  window.addEventListener("touchmove", onMove, { passive: true });
   window.addEventListener("resize", () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
 
+  // First paint
   update();
 })();
