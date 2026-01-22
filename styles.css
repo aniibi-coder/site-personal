@@ -70,10 +70,28 @@ body {
     linear-gradient(135deg, var(--bg1), var(--bg2));
   z-index: -2;
 }
+  /* subtle animated color drift */
+  background-size: 200% 200%, 220% 220%, 210% 210%, 180% 180%, 100% 100%;
+  background-position: 0% 0%, 100% 0%, 50% 100%, 50% 50%, 0% 0%;
+  animation: wallpaper-drift 22s ease-in-out infinite alternate;
+  will-change: background-position;
+}
 
+
+:root[data-theme="light"] #wallpaper{
+  /* warm pastel blobs for light theme */
+  background:
+    radial-gradient(1200px 820px at 18% 22%, rgba(255,128,118,.18), transparent 58%),
+    radial-gradient(980px 680px at 72% 30%, rgba(255,206,148,.16), transparent 58%),
+    radial-gradient(1200px 920px at 58% 80%, rgba(255,160,210,.12), transparent 62%),
+    radial-gradient(1100px 900px at 55% 50%, rgba(0,0,0,.10), transparent 70%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+}
 
 /* ambient particles / paper grain */
 #wallpaper::before{
+  animation: grain-drift 14s ease-in-out infinite alternate;
+  will-change: opacity, background-position;
   content:"";
   position:absolute;
   inset:0;
@@ -90,6 +108,8 @@ body {
   mix-blend-mode: screen;
 }
 :root[data-theme="light"] #wallpaper::before{
+  animation: grain-drift 14s ease-in-out infinite alternate;
+  will-change: opacity, background-position;
   background-image:
     radial-gradient(circle, rgba(0,0,0,.07) 0 1px, transparent 1.2px),
     radial-gradient(circle, rgba(0,0,0,.05) 0 1px, transparent 1.2px),
@@ -613,6 +633,47 @@ button.buddy__card:active{
 @keyframes eqbounce{
   0%,100%{ transform: scaleY(0.6); }
   50%{ transform: scaleY(1.6); }
+}
+
+
+
+/* -------------------------
+   Animated wallpaper drift
+-------------------------- */
+@keyframes wallpaper-drift{
+  0%{
+    background-position: 0% 0%, 100% 0%, 50% 100%, 50% 50%, 0% 0%;
+  }
+  50%{
+    background-position: 18% 10%, 82% 18%, 44% 86%, 56% 46%, 0% 0%;
+  }
+  100%{
+    background-position: 10% 22%, 92% 8%, 62% 94%, 44% 58%, 0% 0%;
+  }
+}
+
+@keyframes grain-drift{
+  0%{
+    opacity: .52;
+    background-position: 0 0, 120px 80px, 60px 160px, 0 0, 0 0;
+  }
+  100%{
+    opacity: .62;
+    background-position: 48px 26px, 168px 122px, 108px 208px, 0 0, 0 0;
+  }
+}
+
+/* Softer motion & lower grain in light theme */
+:root[data-theme="light"] #wallpaper::before{
+  animation-duration: 18s;
+  opacity: .18;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce){
+  #wallpaper, #wallpaper::before{
+    animation: none !important;
+  }
 }
 
 
