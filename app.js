@@ -296,7 +296,7 @@ applySfx(state.sfx);
    Classical music rat (play/pause)
 -------------------------- */
 const ratCard = document.getElementById("ratCard");
-const RAT_TRACK = "./Andante.mp3"; // put Andante.mp3 next to index.html (root)
+const RAT_TRACK = "./assets/Andante.mp3"; // put Andante.mp3 next to index.html (root)
 let ratAudio = null;
 
 function ensureRatAudio(){
