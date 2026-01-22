@@ -63,10 +63,42 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(1200px 800px at 18% 22%, rgba(158,231,255,.18), transparent 55%),
-    radial-gradient(900px 600px at 72% 32%, rgba(255,178,240,.14), transparent 55%),
+    radial-gradient(1200px 800px at 18% 22%, rgba(158,231,255,.22), transparent 55%),
+    radial-gradient(900px 600px at 72% 32%, rgba(255,178,240,.18), transparent 55%),
+    radial-gradient(1200px 900px at 55% 78%, rgba(120,255,214,.10), transparent 60%),
+    radial-gradient(1100px 900px at 55% 50%, rgba(0,0,0,.32), transparent 65%),
     linear-gradient(135deg, var(--bg1), var(--bg2));
   z-index: -2;
+}
+
+
+/* ambient particles / paper grain */
+#wallpaper::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.10) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(255,255,255,.08) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(255,255,255,.06) 0 1px, transparent 1.2px),
+    radial-gradient(900px 600px at 8% 80%, rgba(158,231,255,.08), transparent 60%),
+    radial-gradient(900px 700px at 92% 18%, rgba(255,178,240,.06), transparent 60%);
+  background-size: 220px 220px, 320px 320px, 460px 460px, auto, auto;
+  background-position: 0 0, 120px 80px, 60px 160px, 0 0, 0 0;
+  opacity: .55;
+  mix-blend-mode: screen;
+}
+:root[data-theme="light"] #wallpaper::before{
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,.07) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(0,0,0,.05) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(0,0,0,.04) 0 1px, transparent 1.2px),
+    radial-gradient(900px 600px at 12% 22%, rgba(0,102,255,.10), transparent 60%),
+    radial-gradient(900px 700px at 88% 72%, rgba(0,180,160,.08), transparent 60%);
+  background-size: 240px 240px, 360px 360px, 520px 520px, auto, auto;
+  mix-blend-mode: multiply;
+  opacity: .22;
 }
 
 /* subtle grid */
@@ -244,7 +276,12 @@ body {
   z-index: 10;
 }
 
-.buddy__card{
+buttonbutton.buddy__card{
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--border2);
+  background: var(--panel);
+  color: inherit;
   display:flex;
   align-items:center;
   gap: 12px;
@@ -290,9 +327,34 @@ body {
   pointer-events: auto;
   display:flex;
   flex-direction: column;
+  resize: both;
+  min-width: 340px;
+  min-height: 240px;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 110px);
 }
 
 .window[aria-hidden="true"]{ display:none; }
+
+.window::after{
+  content:"";
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:14px;
+  height:14px;
+  background:
+    linear-gradient(135deg, transparent 60%, rgba(255,255,255,.18) 60%),
+    linear-gradient(135deg, transparent 30%, rgba(255,255,255,.14) 30%);
+  opacity:.65;
+  pointer-events:none;
+}
+:root[data-theme="light"] .window::after{
+  background:
+    linear-gradient(135deg, transparent 60%, rgba(0,0,0,.20) 60%),
+    linear-gradient(135deg, transparent 30%, rgba(0,0,0,.14) 30%);
+}
+
 
 .titlebar{
   height: 44px;
@@ -493,4 +555,57 @@ body {
   body{ overflow: auto; }
   .desktop{ height: auto; min-height: 100vh; overflow: hidden; padding-bottom: 110px; }
   .window{ width: min(560px, calc(100vw - 36px)); height: 520px; }
+}
+
+
+/* Buddy music interactions */
+button.buddy__card{
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  text-align: left;
+}
+button.buddy__card:focus-visible{
+  outline: 2px solid rgba(158,231,255,.55);
+  outline-offset: 2px;
+}
+button.buddy__card:hover{
+  transform: translateY(-1px);
+}
+button.buddy__card:active{
+  transform: translateY(0px);
+}
+.buddy__eq{
+  margin-left: 10px;
+  display:flex;
+  gap: 3px;
+  align-items:flex-end;
+  opacity:.0;
+  transition: opacity .15s ease;
+}
+.buddy__eq span{
+  width: 3px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity:.85;
+}
+#ratCard.is-playing .buddy__eq{ opacity: .95; }
+#ratCard.is-playing .buddy__title::after{ content:"  ♪"; color: var(--accent); }
+#ratCard.is-playing .buddy__eq span:nth-child(1){ animation: eq 0.45s infinite ease-in-out; }
+#ratCard.is-playing .buddy__eq span:nth-child(2){ animation: eq 0.36s infinite ease-in-out; }
+#ratCard.is-playing .buddy__eq span:nth-child(3){ animation: eq 0.52s infinite ease-in-out; }
+@keyframes eq{ 0%,100%{ height: 6px; opacity:.65 } 50%{ height: 14px; opacity:1 } }
+
+#ratCard.is-playing .buddy__eq{ opacity: 1; }
+#ratCard.is-playing .buddy__title::after{ content:"  ♪"; color: var(--accent); }
+#ratCard.is-playing .buddy__img{ transform: rotate(-2deg) scale(1.02); }
+#ratCard .buddy__img{ transition: transform .15s ease; }
+#ratCard.is-playing .buddy__eq span{ animation: eqbounce 0.55s ease-in-out infinite; }
+#ratCard.is-playing .buddy__eq span:nth-child(2){ animation-duration: 0.42s; }
+#ratCard.is-playing .buddy__eq span:nth-child(3){ animation-duration: 0.60s; }
+@keyframes eqbounce{
+  0%,100%{ transform: scaleY(0.6); }
+  50%{ transform: scaleY(1.6); }
+}
+
 }
