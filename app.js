@@ -7,6 +7,13 @@
 
 const STORAGE_KEY = "desktop_portfolio_v1";
 
+const LANG_KEY = "desktop_portfolio_lang_v1";
+
+function detectLang() {
+  const nav = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+  return nav.startsWith("fr") ? "fr" : "en";
+}
+
 const SITE = {
   name: "Maksim SHMELEV",
   tagline: "Marketing & E-commerce • Data-driven",
@@ -35,7 +42,7 @@ const SITE = {
       title: "E-commerce Intern",
       company: "Socialist",
       place: "Moscow, Russia",
-      dates: "Oct 2024 — Feb 2025",
+      dates: "oct. 2024 — fév. 2025",
       bullets: [
         "Analyzed and collected product data; prepared weekly performance reports",
         "Monitored customer engagement and conversion across the sales funnel",
@@ -48,7 +55,7 @@ const SITE = {
       title: "Product Manager",
       company: "Fuh!",
       place: "Moscow, Russia",
-      dates: "Feb 2025 — Aug 2025",
+      dates: "fév. 2025 — août 2025",
       bullets: [
         "Planned advertising activities for a subscription-based psychological service startup",
         "Created brand book and contributed to product positioning",
@@ -63,7 +70,7 @@ const SITE = {
     {
       title: "Brand & Product Management (Master)",
       org: "KEDGE Business School, Bordeaux",
-      dates: "Since Sep 2025",
+      dates: "Depuis sept. 2025",
       bullets: [
         "Public speaking",
         "Digital marketing",
@@ -74,7 +81,7 @@ const SITE = {
     {
       title: "Management in Organizations (Bachelor)",
       org: "Plekhanov Russian University of Economics, Moscow",
-      dates: "Sep 2021 — Aug 2025",
+      dates: "sept. 2021 — août 2025",
       bullets: [
         "Program taught fully in English",
         "Financial / Management / Marketing skills",
@@ -86,13 +93,13 @@ const SITE = {
     {
       title: "Marketplace Manager — Professional Training Course (256h)",
       org: "Yandex Practicum",
-      date: "Jul 2024",
+      date: "juil. 2024",
       bullets: ["Marketplace data analysis", "E-commerce fundamentals", "Media planning & ad management"],
     },
     {
       title: "Google Digital Marketing & E-commerce",
       org: "Google",
-      date: "Jun 2024",
+      date: "juin 2024",
       bullets: ["Marketing basics", "Digital marketing"],
     },
   ],
@@ -102,30 +109,124 @@ const SITE = {
   cvUrl: "assets/CV_2026-01-22_Maksim_Shmelev.pdf",
 };
 
+const SITE_FR = {
+  ...SITE,
+  tagline: "Marketing & E-commerce • orienté data",
+  role: "Stagiaire e-commerce",
+  location: "France / Bordeaux (ouvert aux opportunités)",
+  languages: [
+    { name: "Anglais", level: "IELTS 7.5" },
+    { name: "Français", level: "A2" },
+  ],
+  summary:
+    "Stagiaire avec une expérience en marketing & e-commerce. À l’aise avec les données : analyse des performances de campagnes, optimisation des funnels et amélioration de l’expérience client.",
+  skills: [
+    "Excel / Office / PowerPoint (reporting & analyse)",
+    "Analyse et optimisation des performances de campagnes",
+    "Suivi du funnel client & de l’engagement",
+    "Analyse des retours utilisateurs (avis, rétention, satisfaction)",
+    "Planification détaillée (Calendar / Notion / Teams)",
+    "Outils IA : ChatGPT, Grok, Gemini (workflow quotidien)",
+    "Figma / Photoshop / DaVinci Resolve / Premiere Pro",
+  ],
+  experience: [
+    {
+      title: "Stagiaire e-commerce",
+      company: "Socialist",
+      place: "Moscou, Russie",
+      dates: "oct. 2024 — fév. 2025",
+      bullets: [
+        "Analyse et collecte de données produit ; préparation de rapports de performance hebdomadaires",
+        "Suivi de l’engagement client et de la conversion tout au long du funnel",
+        "Analyse des avis et retours clients afin d’identifier la satisfaction et les axes d’amélioration",
+        "Aide à la mise en ligne de nouveaux produits et au paramétrage de campagnes publicitaires",
+        "Gestion des niveaux de prix via les KPI et l’analyse concurrentielle",
+      ],
+    },
+    {
+      title: "Chef de produit",
+      company: "Fuh!",
+      place: "Moscou, Russie",
+      dates: "fév. 2025 — août 2025",
+      bullets: [
+        "Planification d’actions publicitaires pour une startup de service psychologique par abonnement",
+        "Création d’un brand book et contribution au positionnement produit",
+        "Travail sur le développement produit : analyse des performances et des problèmes utilisateurs",
+        "Collecte et revue des premiers retours utilisateurs après les bêta-tests",
+        "Analyse de l’engagement et de la rétention lors du lancement de l’abonnement",
+        "Collaboration avec l’équipe pour améliorer le produit et personnaliser l’expérience client",
+      ],
+    },
+  ],
+  education: [
+    {
+      title: "Master : Brand & Product Management",
+      org: "KEDGE Business School, Bordeaux",
+      dates: "Depuis sept. 2025",
+      bullets: [
+        "Prise de parole en public",
+        "Marketing digital",
+        "Performance financière",
+        "Analyse des schémas de comportement client",
+      ],
+    },
+    {
+      title: "Licence : Management des organisations",
+      org: "Université russe d’économie Plekhanov, Moscou",
+      dates: "sept. 2021 — août 2025",
+      bullets: [
+        "Programme entièrement enseigné en anglais",
+        "Compétences en finance / management / marketing",
+        "Participation à un programme d’entrepreneuriat",
+      ],
+    },
+  ],
+  certifications: [
+    {
+      title: "Marketplace Manager — Formation professionnelle (256h)",
+      org: "Yandex Practicum",
+      date: "juil. 2024",
+      bullets: ["Analyse de données marketplace", "Fondamentaux du e-commerce", "Médiaplanning & gestion de publicité"],
+    },
+    {
+      title: "Google Digital Marketing & E-commerce",
+      org: "Google",
+      date: "juin 2024",
+      bullets: ["Bases du marketing", "Marketing digital"],
+    },
+  ],
+};
+function getSite() {
+  return state.lang === "fr" ? SITE_FR : SITE;
+}
+
+
+
+
 const WINDOWS = {
   about: {
     title: "about",
     w: 620,
     h: 560,
     html: () => `
-      <h2>hi! i'm ${escapeHtml(SITE.name)}</h2>
-      <p><span class="kbd">${escapeHtml(SITE.role)}</span> · <span class="kbd">${escapeHtml(SITE.tagline)}</span></p>
-      <p style="margin-top:10px;color:var(--muted)">${escapeHtml(SITE.summary)}</p>
+      <h2>hi! i'm ${escapeHtml(getSite().name)}</h2>
+      <p><span class="kbd">${escapeHtml(getSite().role)}</span> · <span class="kbd">${escapeHtml(getSite().tagline)}</span></p>
+      <p style="margin-top:10px;color:var(--muted)">${escapeHtml(getSite().summary)}</p>
 
       <div class="hr"></div>
 
-      <h3>skills</h3>
+      <h3>${t('about_skills')}</h3>
       <ul>
-        ${SITE.skills.map(s => `<li>${escapeHtml(s)}</li>`).join("")}
+        ${getSite().skills.map(s => `<li>${escapeHtml(s)}</li>`).join("")}
       </ul>
 
-      <h3>languages</h3>
+      <h3>${t('about_languages')}</h3>
       <div class="pills">
-        ${SITE.languages.map(l => `<span class="pill">${escapeHtml(l.name)} · ${escapeHtml(l.level)}</span>`).join("")}
+        ${getSite().languages.map(l => `<span class="pill">${escapeHtml(l.name)} · ${escapeHtml(l.level)}</span>`).join("")}
       </div>
 
       <div class="hr"></div>
-      <p>Tip: drag windows by the titlebar. Press <span class="kbd">Esc</span> to close the active window.</p>
+      <p>${t('tip_drag_html')}</p>
     `,
   },
 
@@ -134,9 +235,9 @@ const WINDOWS = {
     w: 720,
     h: 600,
     html: () => `
-      <h2>work experience</h2>
+      <h2>${t('work_title')}</h2>
       <div class="cards">
-        ${SITE.experience.map(job => `
+        ${getSite().experience.map(job => `
           <div class="card">
             <div class="card__title">${escapeHtml(job.title)} · ${escapeHtml(job.company)}</div>
             <div class="card__meta">${escapeHtml(job.place)} · ${escapeHtml(job.dates)}</div>
@@ -149,9 +250,9 @@ const WINDOWS = {
 
       <div class="hr"></div>
 
-      <h3>education</h3>
+      <h3>${t('work_education')}</h3>
       <div class="cards">
-        ${SITE.education.map(ed => `
+        ${getSite().education.map(ed => `
           <div class="card">
             <div class="card__title">${escapeHtml(ed.title)}</div>
             <div class="card__meta">${escapeHtml(ed.org)} · ${escapeHtml(ed.dates)}</div>
@@ -162,9 +263,9 @@ const WINDOWS = {
         `).join("")}
       </div>
 
-      <h3>certifications</h3>
+      <h3>${t('work_certifications')}</h3>
       <div class="cards">
-        ${SITE.certifications.map(c => `
+        ${getSite().certifications.map(c => `
           <div class="card">
             <div class="card__title">${escapeHtml(c.title)}</div>
             <div class="card__meta">${escapeHtml(c.org)} · ${escapeHtml(c.date)}</div>
@@ -182,26 +283,26 @@ const WINDOWS = {
     w: 520,
     h: 480,
     html: () => `
-      <h2>links</h2>
+      <h2>${t('links_title')}</h2>
       <div class="hr"></div>
 
       <div class="cards">
         <div class="card">
           <div class="card__title">LinkedIn</div>
           <div class="card__meta">@maksim-shmelev</div>
-          <a href="${escapeAttr(SITE.linkedin)}" target="_blank" rel="noopener">open</a>
+          <a href="${escapeAttr(getSite().linkedin)}" target="_blank" rel="noopener">${t('links_open')}</a>
         </div>
 
         <div class="card">
           <div class="card__title">Email</div>
-          <div class="card__meta">${escapeHtml(SITE.email)}</div>
-          <a href="mailto:${escapeAttr(SITE.email)}">write</a>
+          <div class="card__meta">${escapeHtml(getSite().email)}</div>
+          <a href="mailto:${escapeAttr(getSite().email)}">${t('links_write')}</a>
         </div>
 
         <div class="card">
           <div class="card__title">CV (PDF)</div>
-          <div class="card__meta">${escapeHtml(SITE.cvUrl)}</div>
-          <a href="${escapeAttr(SITE.cvUrl)}" target="_blank" rel="noopener">open</a>
+          <div class="card__meta">${escapeHtml(getSite().cvUrl)}</div>
+          <a href="${escapeAttr(getSite().cvUrl)}" target="_blank" rel="noopener">${t('links_open')}</a>
         </div>
       </div>
     `,
@@ -212,16 +313,16 @@ const WINDOWS = {
     w: 520,
     h: 440,
     html: () => `
-      <h2>contact</h2>
-      <p>Best way to reach me — email.</p>
+      <h2>${t('contact_title')}</h2>
+      <p>${t('contact_hint')}</p>
       <div class="hr"></div>
 
-      <p><strong>Email:</strong> <a href="mailto:${escapeAttr(SITE.email)}">${escapeHtml(SITE.email)}</a></p>
-      <p><strong>Phone:</strong> <a href="tel:${escapeAttr(SITE.phone.replace(/\s+/g,''))}">${escapeHtml(SITE.phone)}</a></p>
-      <p><strong>LinkedIn:</strong> <a href="${escapeAttr(SITE.linkedin)}" target="_blank" rel="noopener">@maksim-shmelev</a></p>
+      <p><strong>Email:</strong> <a href="mailto:${escapeAttr(getSite().email)}">${escapeHtml(getSite().email)}</a></p>
+      <p><strong>Phone:</strong> <a href="tel:${escapeAttr(getSite().phone.replace(/\s+/g,''))}">${escapeHtml(getSite().phone)}</a></p>
+      <p><strong>LinkedIn:</strong> <a href="${escapeAttr(getSite().linkedin)}" target="_blank" rel="noopener">@maksim-shmelev</a></p>
 
       <div class="hr"></div>
-      <a class="btnlink" href="mailto:${escapeAttr(SITE.email)}?subject=Hello%20from%20your%20website" target="_self">Open mail app</a>
+      <a class="btnlink" href="mailto:${escapeAttr(getSite().email)}?subject=Hello%20from%20your%20website" target="_self">${t('open_mail')}</a>
     `,
   },
 
@@ -230,21 +331,21 @@ const WINDOWS = {
     w: 640,
     h: 520,
     html: () => `
-      <h2>downloads</h2>
-      <p>CV and other files.</p>
+      <h2>${t('downloads_title')}</h2>
+      <p>${t('downloads_hint')}</p>
       <div class="hr"></div>
 
       <div class="cards">
         <div class="card">
           <div class="card__title">CV — Maksim SHMELEV</div>
           <div class="card__meta">PDF</div>
-          <p>Download the latest version of my CV.</p>
-          <a href="${escapeAttr(SITE.cvUrl)}" target="_blank" rel="noopener">open</a>
+          <p>${t('downloads_card_p')}</p>
+          <a href="${escapeAttr(getSite().cvUrl)}" target="_blank" rel="noopener">${t('links_open')}</a>
         </div>
       </div>
 
       <div class="hr"></div>
-      <p style="color:var(--muted);font-family:var(--mono);font-size:12px">Tip: to make the CV link work on GitHub Pages, keep the PDF at <span class="kbd">assets/</span>.</p>
+      <p style="color:var(--muted);font-family:var(--mono);font-size:12px">${t("downloads_tip_html")}</p>
     `,
   },
 
@@ -253,16 +354,16 @@ const WINDOWS = {
     w: 520,
     h: 460,
     html: () => `
-      <h2>faq</h2>
+      <h2>${t('faq_title')}</h2>
 
-      <h3>Do you check DMs?</h3>
-      <p>Usually no — email is best.</p>
+      <h3>${t('faq_q1')}</h3>
+      <p>${t('faq_a1')}</p>
 
-      <h3>What roles are you interested in?</h3>
-      <p>Marketing / E-commerce internships (data-driven) and product / growth roles.</p>
+      <h3>${t('faq_q2')}</h3>
+      <p>${t('faq_a2')}</p>
 
-      <h3>What tools do you use?</h3>
-      <p>${escapeHtml(SITE.skills.slice(0,6).join(" · "))}</p>
+      <h3>${t('faq_q3')}</h3>
+      <p>${escapeHtml(getSite().skills.slice(0,6).join(" · "))}</p>
     `,
   },
 };
@@ -275,22 +376,232 @@ const toastEl = document.getElementById("toast");
 
 const themeToggle = document.getElementById("themeToggle");
 const sfxToggle = document.getElementById("sfxToggle");
+const langToggle = document.getElementById("langToggle");
 const resetLayoutBtn = document.getElementById("resetLayout");
 
 const brandText = document.getElementById("brandText");
 const hintText = document.getElementById("hintText");
 
 const state = loadState();
+// language: saved > browser
+state.lang = state.lang || localStorage.getItem(LANG_KEY) || detectLang();
+localStorage.setItem(LANG_KEY, state.lang);
+
+const I18N = {
+  en: {
+    lang_label: "EN",
+    theme_dark: "Dark",
+    theme_light: "Light",
+    sfx_on: "SFX on",
+    sfx_off: "SFX off",
+    reset: "Reset",
+
+    win_about: "about",
+    win_work: "work",
+    win_links: "links",
+    win_faq: "faq",
+    win_contact: "contact",
+    win_downloads: "downloads",
+
+    dock_about: "about",
+    dock_work: "work",
+    dock_links: "links",
+    dock_faq: "faq",
+    dock_contact: "contact",
+    dock_downloads: "downloads",
+
+    about_skills: "skills",
+    about_languages: "languages",
+    tip_drag_html: 'Tip: drag windows by the titlebar. Press <span class="kbd">Esc</span> to close the active window.',
+
+    work_title: "work experience",
+    work_education: "education",
+    work_certifications: "certifications",
+
+    links_title: "links",
+    links_open: "open",
+    links_write: "write",
+
+    contact_title: "contact",
+    contact_hint: "Best way to reach me — email.",
+    open_mail: "Open mail app",
+
+    downloads_title: "downloads",
+    downloads_hint: "CV and other files.",
+    downloads_card_p: "Download the latest version of my CV.",
+    downloads_tip_html: 'Tip: to make the CV link work on GitHub Pages, keep the PDF at <span class="kbd">assets/</span>.',
+
+    faq_title: "faq",
+    faq_q1: "Do you check DMs?",
+    faq_a1: "Usually no — email is best.",
+    faq_q2: "What roles are you interested in?",
+    faq_a2: "Marketing / E-commerce internships (data-driven) and product / growth roles.",
+    faq_q3: "What tools do you use?",
+
+    buddy_title: "classical music rat",
+    buddy_subtitle: "click to play / pause",
+    buddy_title_attr: "Play / pause Andante",
+
+    toast_sfx_on: "SFX: on",
+    toast_sfx_off: "SFX: off",
+    toast_layout_reset: "Layout reset",
+    toast_audio_play: "♪ Andante — playing",
+    toast_audio_pause: "Andante — paused",
+  },
+  fr: {
+    lang_label: "FR",
+    theme_dark: "Sombre",
+    theme_light: "Clair",
+    sfx_on: "SFX activé",
+    sfx_off: "SFX désactivé",
+    reset: "Réinitialiser",
+
+    win_about: "à propos",
+    win_work: "parcours",
+    win_links: "liens",
+    win_faq: "FAQ",
+    win_contact: "contact",
+    win_downloads: "téléchargements",
+
+    dock_about: "à propos",
+    dock_work: "parcours",
+    dock_links: "liens",
+    dock_faq: "FAQ",
+    dock_contact: "contact",
+    dock_downloads: "téléchargements",
+
+    about_skills: "compétences",
+    about_languages: "langues",
+    tip_drag_html: 'Astuce : déplace les fenêtres en faisant glisser la barre du haut. Appuie sur <span class="kbd">Échap</span> pour fermer la fenêtre active.',
+
+    work_title: "expérience professionnelle",
+    work_education: "formation",
+    work_certifications: "certifications",
+
+    links_title: "liens",
+    links_open: "ouvrir",
+    links_write: "écrire",
+
+    contact_title: "contact",
+    contact_hint: "Le plus simple pour me contacter : email.",
+    open_mail: "Ouvrir l’app Mail",
+
+    downloads_title: "téléchargements",
+    downloads_hint: "CV et autres fichiers.",
+    downloads_card_p: "Télécharger la dernière version de mon CV.",
+    downloads_tip_html: 'Astuce : pour que le lien du CV fonctionne sur GitHub Pages, garde le PDF dans <span class="kbd">assets/</span>.',
+
+    faq_title: "FAQ",
+    faq_q1: "Tu lis tes messages privés ?",
+    faq_a1: "En général non — l’email est le mieux.",
+    faq_q2: "Quels rôles t’intéressent ?",
+    faq_a2: "Stages en marketing / e-commerce (orientés data) et rôles produit / growth.",
+    faq_q3: "Quels outils utilises-tu ?",
+
+    buddy_title: "rat de musique classique",
+    buddy_subtitle: "clic = play / pause",
+    buddy_title_attr: "Lecture / pause Andante",
+
+    toast_sfx_on: "SFX : activé",
+    toast_sfx_off: "SFX : désactivé",
+    toast_layout_reset: "Disposition réinitialisée",
+    toast_audio_play: "♪ Andante — lecture",
+    toast_audio_pause: "Andante — pause",
+  },
+};
+
+function t(key) {
+  const dict = I18N[state.lang] || I18N.en;
+  return dict[key] ?? I18N.en[key] ?? key;
+}
+
+
 
 /* z-index stacking */
 let zTop = 20;
 let activeWindowId = null;
 
-brandText.textContent = `hi! i'm ${SITE.name}`;
-hintText.textContent = SITE.tagline;
+brandText.textContent = state.lang === "fr" ? `salut ! je suis ${getSite().name}` : `hi! i'm ${getSite().name}`;
+hintText.textContent = getSite().tagline;
 
 applyTheme(state.theme);
 applySfx(state.sfx);
+
+applyLang(state.lang);
+
+function applyLang(lang) {
+  state.lang = (lang === "fr") ? "fr" : "en";
+  localStorage.setItem(LANG_KEY, state.lang);
+  document.documentElement.setAttribute("lang", state.lang);
+
+  // top texts
+  brandText.textContent = state.lang === "fr"
+    ? `salut ! je suis ${getSite().name}`
+    : `hi! i'm ${getSite().name}`;
+  hintText.textContent = getSite().tagline;
+
+  // topbar buttons text
+  if (langToggle) {
+    langToggle.querySelector(".toggle__label").textContent = t("lang_label");
+    langToggle.setAttribute("aria-pressed", state.lang === "fr" ? "true" : "false");
+  }
+  if (resetLayoutBtn) resetLayoutBtn.textContent = t("reset");
+
+  // update titles (tooltips)
+  themeToggle.title = state.lang === "fr" ? "Thème" : "Theme";
+  sfxToggle.title = state.lang === "fr" ? "Effets sonores" : "Sound effects";
+  if (langToggle) langToggle.title = state.lang === "fr" ? "Langue" : "Language";
+
+  // dock labels
+  const map = {
+    about: "dock_about",
+    work: "dock_work",
+    links: "dock_links",
+    faq: "dock_faq",
+    contact: "dock_contact",
+    downloads: "dock_downloads",
+  };
+  document.querySelectorAll('.icon[data-open]').forEach((btn) => {
+    const id = btn.getAttribute("data-open");
+    const el = btn.querySelector(".icon__label");
+    if (el && map[id]) el.textContent = t(map[id]);
+  });
+
+  // buddy labels
+  const buddyTitle = document.querySelector("#ratCard .buddy__title");
+  const buddySubtitle = document.querySelector("#ratCard .buddy__subtitle");
+  const buddyImg = document.querySelector("#ratCard .buddy__img");
+  const ratBtn = document.getElementById("ratCard");
+  if (buddyTitle) buddyTitle.textContent = t("buddy_title");
+  if (buddySubtitle) buddySubtitle.textContent = t("buddy_subtitle");
+  if (buddyImg) buddyImg.alt = t("buddy_title");
+  if (ratBtn) ratBtn.title = t("buddy_title_attr");
+
+  // re-render open windows
+  document.querySelectorAll(".window").forEach((w) => {
+    const wid = w.id?.replace(/^win-/, "");
+    if (!wid) return;
+    const titleEl = w.querySelector(".titlebar__title");
+    if (titleEl) titleEl.textContent = t(`win_${wid}`);
+    const contentEl = w.querySelector(".window__content");
+    if (contentEl && WINDOWS[wid] && typeof WINDOWS[wid].html === "function") {
+      contentEl.innerHTML = WINDOWS[wid].html();
+    }
+  });
+
+  // refresh toggles
+  applyTheme(state.theme);
+  applySfx(state.sfx);
+}
+
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    applyLang(state.lang === "fr" ? "en" : "fr");
+    saveState();
+    beep(700, 30);
+  });
+}
+
 
 /* -------------------------
    Classical music rat (play/pause)
@@ -321,10 +632,10 @@ if (ratCard){
     try{
       if (a.paused){
         await a.play();
-        toast("♪ Andante — playing");
+        toast(t("toast_audio_play"));
       } else {
         a.pause();
-        toast("Andante — paused");
+        toast(t("toast_audio_pause"));
       }
     } catch (e){
       // Usually autoplay permission; user gesture already happened, but just in case.
@@ -415,10 +726,10 @@ if (ratCard){
     try{
       if (a.paused){
         await a.play();
-        toast("♪ Andante — playing");
+        toast(t("toast_audio_play"));
       } else {
         a.pause();
-        toast("Andante — paused");
+        toast(t("toast_audio_pause"));
       }
     } catch (e){
       // Usually autoplay permission; user gesture already happened, but just in case.
@@ -428,7 +739,7 @@ if (ratCard){
 }
   saveState();
   beep(440, 40);
-  toast(state.sfx ? "SFX: on" : "SFX: off");
+  toast(state.sfx ? t("toast_sfx_on") : t("toast_sfx_off"));
 });
 
 resetLayoutBtn.addEventListener("click", () => {
@@ -452,7 +763,7 @@ resetLayoutBtn.addEventListener("click", () => {
   });
 
   beep(520, 50);
-  toast("Layout reset");
+  toast(t("toast_layout_reset"));
 });
 
 /* -------------------------
@@ -477,7 +788,7 @@ function openWindow(id) {
   win.id = `win-${id}`;
   win.setAttribute("role", "dialog");
   win.setAttribute("aria-modal", "false");
-  win.setAttribute("aria-label", def.title);
+  win.setAttribute("aria-label", t(`win_${id}`));
 
   win.style.width = `${rect.w}px`;
   win.style.height = `${rect.h}px`;
@@ -487,7 +798,7 @@ function openWindow(id) {
 
   win.innerHTML = `
     <div class="titlebar" data-drag-handle>
-      <div class="titlebar__title">${escapeHtml(def.title)}</div>
+      <div class="titlebar__title">${escapeHtml(t(`win_${id}`))}</div>
       <div class="titlebar__actions">
         <button class="winbtn winbtn--close" type="button" aria-label="Close">[x]</button>
       </div>
@@ -660,13 +971,13 @@ function markIconOpen(id, isOpen) {
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-  themeToggle.querySelector(".toggle__label").textContent = theme === "dark" ? "Dark" : "Light";
+  themeToggle.querySelector(".toggle__label").textContent = theme === "dark" ? t("theme_dark") : t("theme_light");
   themeToggle.querySelector(".toggle__icon").textContent = theme === "dark" ? "☾" : "☀";
 }
 
 function applySfx(on) {
   sfxToggle.setAttribute("aria-pressed", on ? "true" : "false");
-  sfxToggle.querySelector(".toggle__label").textContent = on ? "SFX on" : "SFX off";
+  sfxToggle.querySelector(".toggle__label").textContent = on ? t("sfx_on") : t("sfx_off");
   sfxToggle.querySelector(".toggle__icon").textContent = on ? "♪" : "∅";
 }
 
@@ -679,6 +990,7 @@ function loadState() {
     sfx: false,
     open: {},
     layout: {},
+    lang: null,
   };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -736,90 +1048,4 @@ function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
 
   // ensure dock indicators match
   Object.keys(state.open || {}).forEach((id) => markIconOpen(id, true));
-})();
-
-/* -------------------------
-   Eyes (follow cursor) — SVG pupils
--------------------------- */
-(function initEyes(){
-  const watcher = document.getElementById("watcher");
-  const svg = document.getElementById("eyesSvg");
-  if (!watcher || !svg) return;
-
-  const pupilL = document.getElementById("pupilL");
-  const pupilR = document.getElementById("pupilR");
-  const shineL = document.getElementById("shineL");
-  const shineR = document.getElementById("shineR");
-  if (!pupilL || !pupilR) return;
-
-  // Base centers in SVG units (match cx/cy in index.html)
-  const base = {
-    L: { x: 60,  y: 40 },
-    R: { x: 180, y: 40 },
-  };
-
-  // Max travel inside eye (SVG units)
-  const MAX = 10;
-
-  let targetClient = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  let raf = null;
-
-  function clientToSvgPoint(clientX, clientY){
-    const pt = svg.createSVGPoint();
-    pt.x = clientX;
-    pt.y = clientY;
-    const ctm = svg.getScreenCTM();
-    if (!ctm) return { x: 120, y: 40 };
-    const inv = ctm.inverse();
-    const sp = pt.matrixTransform(inv);
-    return { x: sp.x, y: sp.y };
-  }
-
-  function movePupil(pupil, shine, center, target){
-    const dx = target.x - center.x;
-    const dy = target.y - center.y;
-    const dist = Math.hypot(dx, dy) || 1;
-
-    // Natural movement: farther cursor -> slightly more movement, but clamped
-    const travel = Math.min(MAX, dist * 0.12);
-
-    const nx = (dx / dist) * travel;
-    const ny = (dy / dist) * travel;
-
-    const cx = center.x + nx;
-    const cy = center.y + ny;
-
-    pupil.setAttribute("cx", cx.toFixed(2));
-    pupil.setAttribute("cy", cy.toFixed(2));
-
-    // Optional tiny shine offset (kept subtle)
-    if (shine){
-      shine.setAttribute("cx", (cx - 5).toFixed(2));
-      shine.setAttribute("cy", (cy - 5).toFixed(2));
-    }
-  }
-
-  function update(){
-    raf = null;
-    const t = clientToSvgPoint(targetClient.x, targetClient.y);
-
-    movePupil(pupilL, shineL, base.L, t);
-    movePupil(pupilR, shineR, base.R, t);
-  }
-
-  function onMove(e){
-    const p = e.touches ? e.touches[0] : e;
-    if (!p) return;
-    targetClient.x = p.clientX;
-    targetClient.y = p.clientY;
-    if (!raf) raf = requestAnimationFrame(update);
-  }
-
-  window.addEventListener("mousemove", onMove, { passive: true });
-  window.addEventListener("touchstart", onMove, { passive: true });
-  window.addEventListener("touchmove", onMove, { passive: true });
-  window.addEventListener("resize", () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
-
-  // First paint
-  update();
 })();
