@@ -737,3 +737,58 @@ function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
   // ensure dock indicators match
   Object.keys(state.open || {}).forEach((id) => markIconOpen(id, true));
 })();
+
+/* -------------------------
+   Eyes (follow cursor)
+-------------------------- */
+(function initEyes(){
+  const watcher = document.getElementById("watcher");
+  if (!watcher) return;
+
+  const eyes = Array.from(watcher.querySelectorAll(".eye")).map((eye) => ({
+    eye,
+    pupil: eye.querySelector(".pupil"),
+  }));
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let raf = null;
+
+  function update(){
+    raf = null;
+    for (const { eye, pupil } of eyes){
+      if (!pupil) continue;
+
+      const r = eye.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+
+      const dx = targetX - cx;
+      const dy = targetY - cy;
+
+      const angle = Math.atan2(dy, dx);
+      const max = Math.min(r.width, r.height) * 0.22;
+      const dist = Math.min(max, Math.hypot(dx, dy) * 0.06);
+
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+
+      pupil.style.transform = `translate(calc(-50% + ${tx.toFixed(2)}px), calc(-50% + ${ty.toFixed(2)}px))`;
+    }
+  }
+
+  function onPointerMove(e){
+    const p = e.touches ? e.touches[0] : e;
+    if (!p) return;
+    targetX = p.clientX;
+    targetY = p.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }
+
+  window.addEventListener("mousemove", onPointerMove, { passive: true });
+  window.addEventListener("touchstart", onPointerMove, { passive: true });
+  window.addEventListener("touchmove", onPointerMove, { passive: true });
+  window.addEventListener("resize", () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+
+  update();
+})();
