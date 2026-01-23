@@ -103,6 +103,33 @@ const SITE = {
       bullets: ["Marketing basics", "Digital marketing"],
     },
   ],
+
+  academicProjects: [
+    {
+      title: "Ridekit.fr — Interactive gear recommender (MVP)",
+      skills: ["Product", "UX", "JavaScript", "Data"],
+      date: "2026",
+      desc: "One‑page web MVP with interactive UI, user flow, and recommendations. Focus: conversion, clarity, and iteration speed.",
+      img: "",
+      accent: "yeti",
+    },
+    {
+      title: "Financial Econometrics — Portfolio & factor analysis",
+      skills: ["Python", "Pandas", "Statsmodels", "CAPM/FF"],
+      date: "2025",
+      desc: "Built portfolio panels, computed summary stats, and ran time‑series regressions (CAPM / multi‑factor) on historical returns.",
+      img: "",
+      accent: "chart",
+    },
+    {
+      title: "Neural Networks — Self‑attention math exercise",
+      skills: ["Linear Algebra", "Softmax", "Transformers"],
+      date: "2025",
+      desc: "Computed attention scores, scaled softmax weights, and context vectors; documented intuition and implementation details.",
+      img: "",
+      accent: "ai",
+    },
+  ],
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/maksim-shmelev/" },
   ],
@@ -129,7 +156,34 @@ const SITE_FR = {
     "Outils IA : ChatGPT, Grok, Gemini (workflow quotidien)",
     "Figma / Photoshop / DaVinci Resolve / Premiere Pro",
   ],
-  experience: [
+  
+  academicProjects: [
+    {
+      title: "Ridekit.fr — Recommandations d’équipement (MVP)",
+      skills: ["Produit", "UX", "JavaScript", "Données"],
+      date: "2026",
+      desc: "MVP web en une page avec UI interactive, parcours utilisateur et recommandations. Focus : conversion, clarté, itérations rapides.",
+      img: "",
+      accent: "yeti",
+    },
+    {
+      title: "Économétrie financière — Portefeuilles & facteurs",
+      skills: ["Python", "Pandas", "Statsmodels", "CAPM/FF"],
+      date: "2025",
+      desc: "Construction de panels de portefeuilles, statistiques descriptives, et régressions en séries temporelles (CAPM / multifactoriel).",
+      img: "",
+      accent: "chart",
+    },
+    {
+      title: "Réseaux de neurones — Maths de l’attention",
+      skills: ["Algèbre linéaire", "Softmax", "Transformers"],
+      date: "2025",
+      desc: "Calcul des scores d’attention, softmax normalisé, et vecteurs de contexte ; explication de l’intuition et des étapes.",
+      img: "",
+      accent: "ai",
+    },
+  ],
+experience: [
     {
       title: "Stagiaire e-commerce",
       company: "Socialist",
@@ -278,6 +332,42 @@ const WINDOWS = {
     `,
   },
 
+
+  projects: {
+    title: "projects",
+    w: 860,
+    h: 640,
+    html: () => `
+      <h2>${t('projects_title')}</h2>
+      <p style="color:var(--muted)">${t('projects_hint')}</p>
+      <div class="hr"></div>
+
+      <div class="projlist">
+        ${getSite().academicProjects.map((p) => `
+          <article class="projcard">
+            <div class="projcard__thumb">
+              ${p.img
+                ? `<img src="${escapeAttr(p.img)}" alt="${escapeAttr(p.title)}" loading="lazy" />`
+                : `<div class="projthumb" data-accent="${escapeAttr(p.accent || 'default')}">
+                     <span aria-hidden="true">${p.accent === 'yeti' ? '❄️' : (p.accent === 'chart' ? '📈' : (p.accent === 'ai' ? '🧠' : '📁'))}</span>
+                   </div>`
+              }
+            </div>
+
+            <div class="projcard__body">
+              <div class="projcard__head">
+                <div class="projcard__title">${escapeHtml(p.title)}</div>
+                <div class="projcard__skills">${escapeHtml((p.skills || []).join("  •  "))}</div>
+                <div class="projcard__date">${escapeHtml(p.date || "")}</div>
+              </div>
+              <p class="projcard__desc">${escapeHtml(p.desc || "")}</p>
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    `,
+  },
+
   links: {
     title: "links",
     w: 520,
@@ -363,7 +453,7 @@ const WINDOWS = {
       <p>${t('faq_a2')}</p>
 
       <h3>${t('faq_q3')}</h3>
-      <p>${escapeHtml(getSite().skills.slice(0,6).join(" · "))}</p>
+      <p>${t('faq_a3')}</p>
     `,
   },
 };
@@ -398,6 +488,7 @@ const I18N = {
 
     win_about: "about",
     win_work: "work",
+    win_projects: "projects",
     win_links: "links",
     win_faq: "faq",
     win_contact: "contact",
@@ -405,6 +496,7 @@ const I18N = {
 
     dock_about: "about",
     dock_work: "work",
+    dock_projects: "projects",
     dock_links: "links",
     dock_faq: "faq",
     dock_contact: "contact",
@@ -415,6 +507,8 @@ const I18N = {
     tip_drag_html: 'Tip: drag windows by the titlebar. Press <span class="kbd">Esc</span> to close the active window.',
 
     work_title: "work experience",
+    projects_title: "projects",
+    projects_hint: "Academic and learning projects (editable).",
     work_education: "education",
     work_certifications: "certifications",
 
@@ -459,6 +553,7 @@ const I18N = {
 
     win_about: "à propos",
     win_work: "parcours",
+    win_projects: "projets",
     win_links: "liens",
     win_faq: "FAQ",
     win_contact: "contact",
@@ -466,6 +561,7 @@ const I18N = {
 
     dock_about: "à propos",
     dock_work: "parcours",
+    dock_projects: "projets",
     dock_links: "liens",
     dock_faq: "FAQ",
     dock_contact: "contact",
@@ -558,6 +654,7 @@ function applyLang(lang) {
   const map = {
     about: "dock_about",
     work: "dock_work",
+    projects: "dock_projects",
     links: "dock_links",
     faq: "dock_faq",
     contact: "dock_contact",
