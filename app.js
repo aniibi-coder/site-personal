@@ -432,11 +432,12 @@ const I18N = {
     downloads_tip_html: 'Tip: to make the CV link work on GitHub Pages, keep the PDF at <span class="kbd">assets/</span>.',
 
     faq_title: "faq",
-    faq_q1: "Do you check DMs?",
-    faq_a1: "Usually no — email is best.",
+    faq_q1: "Do you check DMs and emails?",
+    faq_a1: "Of course, I reply to all emails as I could",
     faq_q2: "What roles are you interested in?",
-    faq_a2: "Marketing / E-commerce internships (data-driven) and product / growth roles.",
+    faq_a2: "I am currently searching Internships in Marketing and E-commerce preferably.",
     faq_q3: "What tools do you use?",
+    faq_a3: "The tools you give me, usually I work with Excel, Word, Photoshop, Powerpoint and other; I can learn new tools if I need for the job",
 
     buddy_title: "classical music rat",
     buddy_subtitle: "click to play / pause",
@@ -495,8 +496,9 @@ const I18N = {
     faq_q1: "Tu lis tes messages privés ?",
     faq_a1: "En général non — l’email est le mieux.",
     faq_q2: "Quels rôles t’intéressent ?",
-    faq_a2: "Stages en marketing / e-commerce (orientés data) et rôles produit / growth.",
+    faq_a2: "Je recherche actuellement des stages en marketing et en commerce électronique, de préférence.",
     faq_q3: "Quels outils utilises-tu ?",
+    faq_a3: "Les outils que vous me fournissez, je travaille généralement avec Excel, Word, Photoshop, PowerPoint et autres ; je peux apprendre de nouveaux outils si nécessaire pour le travail.",
 
     buddy_title: "rat de musique classique",
     buddy_subtitle: "clic = play / pause",
