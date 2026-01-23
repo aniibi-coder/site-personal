@@ -1062,3 +1062,64 @@ html[data-theme="light"] .projcard__thumb{
 
 
 
+/* -------------------------
+   FAQ accordion (details/summary)
+-------------------------- */
+.faq {
+  display: grid;
+  gap: 10px;
+}
+
+.faqitem {
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 12px;
+  background: rgba(255,255,255,.65);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .faqitem{
+  border-color: rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+
+.faqitem summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faqitem summary::-webkit-details-marker{ display:none; }
+
+.faqitem summary::after{
+  content: "▾";
+  margin-left: auto;
+  opacity: .55;
+  transform: translateY(-1px);
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+.faqitem[open] summary::after{
+  transform: rotate(180deg) translateY(1px);
+  opacity: .85;
+}
+
+.faqitem__a{
+  padding: 0 14px 12px 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.faqitem__a p{ margin: 8px 0 0 0; }
+
+
+
+
