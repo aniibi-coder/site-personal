@@ -445,15 +445,26 @@ const WINDOWS = {
     h: 460,
     html: () => `
       <h2>${t('faq_title')}</h2>
+      <p style="color:var(--muted)">${t('faq_hint')}</p>
 
-      <h3>${t('faq_q1')}</h3>
-      <p>${t('faq_a1')}</p>
+      <div class="hr"></div>
 
-      <h3>${t('faq_q2')}</h3>
-      <p>${t('faq_a2')}</p>
+      <div class="faq">
+        <details class="faqitem">
+          <summary class="faqitem__q">${t('faq_q1')}</summary>
+          <div class="faqitem__a"><p>${t('faq_a1')}</p></div>
+        </details>
 
-      <h3>${t('faq_q3')}</h3>
-      <p>${t('faq_a3')}</p>
+        <details class="faqitem">
+          <summary class="faqitem__q">${t('faq_q2')}</summary>
+          <div class="faqitem__a"><p>${t('faq_a2')}</p></div>
+        </details>
+
+        <details class="faqitem">
+          <summary class="faqitem__q">${t('faq_q3')}</summary>
+          <div class="faqitem__a"><p>${t('faq_a3')}</p></div>
+        </details>
+      </div>
     `,
   },
 };
@@ -526,6 +537,7 @@ const I18N = {
     downloads_tip_html: 'Tip: to make the CV link work on GitHub Pages, keep the PDF at <span class="kbd">assets/</span>.',
 
     faq_title: "faq",
+    faq_hint: "Click a question to reveal the answer.",
     faq_q1: "Do you check DMs and emails?",
     faq_a1: "Of course, I reply to all emails as I could",
     faq_q2: "What roles are you interested in?",
@@ -589,6 +601,7 @@ const I18N = {
     downloads_tip_html: 'Astuce : pour que le lien du CV fonctionne sur GitHub Pages, garde le PDF dans <span class="kbd">assets/</span>.',
 
     faq_title: "FAQ",
+    faq_hint: "Clique sur une question pour voir la réponse.",
     faq_q1: "Tu lis tes messages privés ?",
     faq_a1: "En général non — l’email est le mieux.",
     faq_q2: "Quels rôles t’intéressent ?",
@@ -923,6 +936,8 @@ function openWindow(id) {
   enableDrag(win, id);
   enableResizePersistence(win, id);
 
+  if (id === "faq") setupFaqAccordion(win);
+
   focusWindow(id, win);
   beep(740, 28);
 }
@@ -973,6 +988,33 @@ function disableResizePersistence(id){
   if (!ro) return;
   try{ ro.disconnect(); } catch(_){}
   _resizeObservers.delete(id);
+}
+
+
+
+/* -------------------------
+   FAQ accordion behaviour
+   - closed by default (details)
+   - only one item open at a time
+-------------------------- */
+function setupFaqAccordion(winEl){
+  const items = Array.from(winEl.querySelectorAll("details.faqitem"));
+  if (!items.length) return;
+
+  items.forEach((d) => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      // close others
+      items.forEach((other) => {
+        if (other !== d) other.open = false;
+      });
+      beep(620, 18);
+    });
+    const summary = d.querySelector("summary");
+    if (summary){
+      summary.addEventListener("click", () => beep(520, 14));
+    }
+  });
 }
 
 /* -------------------------
