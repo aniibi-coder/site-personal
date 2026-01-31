@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maksim Shmelev · Portfolio</title>
+  <meta name="description" content="Interactive portfolio with a power-on monitor intro." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Intro: realistic monitor -->
+  <main class="intro" id="intro" aria-label="Monitor intro">
+    <div class="intro__bg"></div>
+
+    <section class="rig" aria-label="Monitor">
+      <div class="monitor">
+        <img class="monitor__img" src="assets/monitor.png" alt="Monitor" draggable="false" />
+
+        <!-- Screen cutout (tweak these vars to fit your monitor photo) -->
+        <div class="screen-cutout" id="screenCutout"
+             style="--sx: 14.5%; --sy: 10.8%; --sw: 71.5%; --sh: 62.8%; --sr: 10px;">
+          <div class="screen" id="screen">
+            <!-- OFF overlay -->
+            <div class="overlay overlay--off" id="overlayOff" aria-hidden="false">
+              <div class="hint">
+                <span class="hint__dot" aria-hidden="true"></span>
+                <span class="hint__text">Press power</span>
+              </div>
+            </div>
+
+            <!-- BOOT overlay -->
+            <div class="overlay overlay--boot" id="overlayBoot" aria-hidden="true">
+              <div class="boot">
+                <div class="boot__logo">Windows</div>
+                <div class="boot__bar" aria-label="Loading">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="boot__sub">Starting up…</div>
+              </div>
+            </div>
+
+            <!-- OS (desktop) starts hidden, then animates to full-screen -->
+            <div class="os" id="os" data-power="off" aria-label="Desktop">
+              <div class="desktop" id="desktop" aria-label="Desktop background">
+                <div class="desktop__icons" id="desktopIcons" aria-label="Desktop icons"></div>
+                <div class="wm" id="wm" aria-label="Windows area"></div>
+
+                <div class="taskbar" role="navigation" aria-label="Taskbar">
+                  <button class="start" id="startBtn" type="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="start__logo" aria-hidden="true"></span>
+                    <span class="start__text">start</span>
+                  </button>
+
+                  <div class="taskbar__tasks" id="taskbarTasks" aria-label="Open windows"></div>
+
+                  <div class="tray" aria-label="System tray">
+                    <button class="tray__btn" id="muteBtn" type="button" title="Sound (fake)" aria-label="Sound">
+                      <span aria-hidden="true">🔊</span>
+                    </button>
+                    <div class="tray__clock" id="clock">--:--</div>
+                  </div>
+                </div>
+
+                <div class="startmenu" id="startMenu" role="menu" aria-label="Start menu" hidden>
+                  <div class="startmenu__header">
+                    <div class="avatar" aria-hidden="true"></div>
+                    <div class="startmenu__name">
+                      <div class="name__main">Maksim Shmelev</div>
+                      <div class="name__sub">E-commerce · Digital Marketing</div>
+                    </div>
+                  </div>
+
+                  <div class="startmenu__cols">
+                    <div class="startmenu__col">
+                      <div class="startmenu__section">Pinned</div>
+                      <button class="sm-item" data-open="cv" role="menuitem">
+                        <span class="sm-ico">📄</span> CV.pdf
+                      </button>
+                      <button class="sm-item" data-open="projects" role="menuitem">
+                        <span class="sm-ico">📁</span> Projects
+                      </button>
+                      <button class="sm-item" data-open="contact" role="menuitem">
+                        <span class="sm-ico">✉️</span> Contact
+                      </button>
+                    </div>
+
+                    <div class="startmenu__col startmenu__col--right">
+                      <div class="startmenu__section">Quick</div>
+                      <a class="sm-item sm-link" href="CV_Maksim_Shmelev_Ecommerce.pdf" target="_blank" rel="noopener">
+                        <span class="sm-ico">↗</span> Open CV in new tab
+                      </a>
+                      <button class="sm-item sm-danger" data-poweroff="1" role="menuitem">
+                        <span class="sm-ico">⏻</span> Shut down…
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /desktop -->
+            </div><!-- /os -->
+          </div><!-- /screen -->
+        </div><!-- /screen-cutout -->
+
+        <!-- Power button (overlay) -->
+        <button class="power-btn" id="powerBtn" type="button" aria-label="Power button">
+          <span class="power-btn__ring" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="rig__caption">
+        <span class="cap__pill">Tip: click power → boot → desktop</span>
+        <span class="cap__pill">Double‑click icons · drag windows</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
