@@ -798,89 +798,6 @@ display: flex;
       font-family: 'Courier Prime', monospace;
     }
     .doc-link:hover{ opacity: .7; }
-/* ===== Projects: always-open panels + switcher (like tabs) ===== */
-.projects-switch{
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 18px;
-  margin-top: 18px;
-}
-.project-tabs{
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.proj-tab{
-  background: transparent;
-  border: 3px solid #1a1410;
-  color: #1a1410;
-  padding: 14px 16px;
-  font-family: 'VT323', monospace;
-  font-size: 1.35rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .18s ease;
-  text-align: left;
-}
-.proj-tab:hover{ transform: translateX(6px); }
-.proj-tab.active{
-  background: #1a1410;
-  color: #fff;
-}
-.project-panels{ min-width: 0; }
-.project-panel{
-  display: none;
-  border: 2px solid rgba(26,20,16,0.20);
-  background: rgba(0,0,0,0.02);
-  padding: 18px;
-}
-.project-panel.active{
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 18px;
-  align-items: start;
-}
-.project-panel-img{
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  background: rgba(0,0,0,0.03);
-  padding: 12px;
-  border-radius: 2px;
-}
-.project-panel-title{
-  font-family: 'VT323', monospace;
-  font-size: 2.1rem;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-.project-panel-desc{
-  line-height: 1.7;
-  opacity: .92;
-  margin-bottom: 14px;
-}
-@media (max-width: 768px){
-  .projects-switch{
-    grid-template-columns: 1fr;
-  }
-  .project-tabs{
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    gap: 10px;
-  }
-  .proj-tab{
-    white-space: nowrap;
-    flex: 0 0 auto;
-    padding: 12px 14px;
-    font-size: 1.25rem;
-  }
-  .project-panel.active{
-    grid-template-columns: 1fr;
-  }
-}
 </style>
 </head>
 <body>
@@ -1071,74 +988,73 @@ display: flex;
 
         <!-- Projects Section -->
         <section class="content-section" id="projects">
-  <h2 class="section-title">>>> PROJECTS</h2>
-  <div class="item-subtitle">Select a project on the left to view details. (Links currently point to <strong>assets/txt.txt</strong> — replace anytime.)</div>
+            
+      <h2 class="section-title">Projects</h2>
+      <div class="item-subtitle">Links currently point to <strong>assets/txt.txt</strong>. Replace them with your URLs or PDFs anytime.</div>
 
-  <div class="projects-switch" aria-label="Projects switcher">
-    <div class="project-tabs" role="tablist" aria-label="Project list">
-      <button class="proj-tab active" type="button" role="tab" aria-selected="true" data-target="proj-1">Ridekit.fr — Gear Finder</button>
-      <button class="proj-tab" type="button" role="tab" aria-selected="false" data-target="proj-2">Wildberries Growth — SEO + Ads</button>
-      <button class="proj-tab" type="button" role="tab" aria-selected="false" data-target="proj-3">Mental AI Assistant — Startup</button>
-    </div>
+      <div class="projects-grid">
 
-    <div class="project-panels">
-      <article class="project-panel active" id="proj-1" role="tabpanel">
-        <img class="project-panel-img" src="assets/picture1.png" alt="Ridekit.fr preview">
-        <div class="project-panel-body">
-          <h3 class="project-panel-title">Ridekit.fr — Gear Finder (Founder)</h3>
-          <p class="project-panel-desc">
-            Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Product</span>
-            <span class="tag">Affiliate</span>
-            <span class="tag">Front-end</span>
+        <article class="project-card">
+          <div class="click-me">click me</div>
+          <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
+          <div class="project-body">
+            <h3 class="project-title">Ridekit.fr — Gear Finder (Founder)</h3>
+            <p class="project-desc">
+              Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Product</span>
+              <span class="tag">Affiliate</span>
+              <span class="tag">Front-end</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Live</a>
+              <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">GitHub</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Live</a>
-            <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-panel" id="proj-2" role="tabpanel">
-        <img class="project-panel-img" src="assets/picture2.png" alt="Marketplace work preview">
-        <div class="project-panel-body">
-          <h3 class="project-panel-title">Wildberries Growth — SEO + Ads</h3>
-          <p class="project-panel-desc">
-            Improved keyword SEO and ad efficiency to increase orders (+21%) and optimize marketplace performance.
-          </p>
-          <div class="project-tags">
-            <span class="tag">E-commerce</span>
-            <span class="tag">SEO</span>
-            <span class="tag">Ads</span>
+        <article class="project-card">
+          <div class="click-me">click me</div>
+          <img class="project-img" src="assets/picture2.png" alt="Marketplace work preview">
+          <div class="project-body">
+            <h3 class="project-title">Wildberries Growth — SEO + Ads</h3>
+            <p class="project-desc">
+              Improved keyword SEO and ad efficiency to increase orders (+21%) and optimize marketplace performance.
+            </p>
+            <div class="project-tags">
+              <span class="tag">E-commerce</span>
+              <span class="tag">SEO</span>
+              <span class="tag">Ads</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Case</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Case</a>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-panel" id="proj-3" role="tabpanel">
-        <img class="project-panel-img" src="assets/picture3.png" alt="Startup preview">
-        <div class="project-panel-body">
-          <h3 class="project-panel-title">Mental AI Assistant — Startup</h3>
-          <p class="project-panel-desc">
-            Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Startup</span>
-            <span class="tag">GTM</span>
-            <span class="tag">Analytics</span>
+        <article class="project-card">
+          <div class="click-me">click me</div>
+          <img class="project-img" src="assets/picture3.png" alt="Startup preview">
+          <div class="project-body">
+            <h3 class="project-title">Mental AI Assistant — Startup</h3>
+            <p class="project-desc">
+              Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Startup</span>
+              <span class="tag">GTM</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Deck</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a class="project-link" href="assets/txt.txt" target="_blank" rel="noopener">Deck</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+        </article>
+
+      </div>
+
+        </section>
 
         <div class="decorative-line"></div>
 
@@ -1212,22 +1128,58 @@ display: flex;
     });
   
     
-    // Projects switcher (always-open panels)
-    const projTabs = document.querySelectorAll('.proj-tab');
-    const projPanels = document.querySelectorAll('.project-panel');
+    // Projects expand/collapse (CLICK ONLY)
+    const projectsGrid = document.querySelector('.projects-grid');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    function setProject(targetId){
-      projTabs.forEach(t => {
-        const on = t.dataset.target === targetId;
-        t.classList.toggle('active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      projPanels.forEach(p => p.classList.toggle('active', p.id === targetId));
+    function resetProjects(){
+      if(!projectsGrid) return;
+      projectsGrid.classList.remove('is-focus');
+      projectCards.forEach(c => { c.classList.remove('active','shrink'); });
     }
 
-    if(projTabs.length && projPanels.length){
-      projTabs.forEach(t => {
-        t.addEventListener('click', () => setProject(t.dataset.target));
+    function focusCard(card){
+      if(!projectsGrid) return;
+      projectsGrid.classList.add('is-focus');
+      projectCards.forEach(c => {
+        if(c === card){
+          c.classList.add('active');
+          c.classList.remove('shrink');
+        } else {
+          c.classList.remove('active');
+          c.classList.add('shrink');
+        }
+      });
+    }
+
+    if(projectsGrid){
+      projectCards.forEach(card => {
+        card.addEventListener('click', (e)=> {
+          // allow clicking links inside without toggling
+          const a = e.target.closest('a');
+          if(a) return;
+
+          e.preventDefault();
+          const isActive = card.classList.contains('active');
+          if(isActive){
+            resetProjects();
+          } else {
+            focusCard(card);
+          }
+        });
+      });
+
+      // click outside Projects to close
+      document.addEventListener('click', (e)=>{
+        const inProjects = e.target.closest('.projects-grid');
+        if(!inProjects && projectsGrid.classList.contains('is-focus')){
+          resetProjects();
+        }
+      });
+
+      // ESC to close
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') resetProjects();
       });
     }
 </script>
