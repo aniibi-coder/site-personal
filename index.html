@@ -584,6 +584,9 @@
       gap: 22px;
     }
     .project-card{
+      display:flex;
+      flex-direction:column;
+
       border: 2px solid rgba(26,20,16,0.20);
       background: rgba(0,0,0,0.02);
       overflow:hidden;
@@ -595,13 +598,17 @@
       background: rgba(0,0,0,0.03);
     }
     .project-img{
+      border-radius: 2px;
       width:100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      aspect-ratio: 1 / 1;      /* square like your images */
+      object-fit: contain;      /* NO CROP */
       display:block;
-      image-rendering: auto;
+      background: rgba(0,0,0,0.03);
+      padding: 10px;            /* breathing room */
     }
     .project-body{
+      flex: 1 1 auto;
+
       padding: 18px 18px 16px;
     }
     .project-title{
