@@ -19,7 +19,7 @@
     /* ALWAYS WHITE VERSION */
     body{
       font-family: 'Courier Prime', monospace;
-      background:#f5f5f5;
+      background:#f2eee7;
       color: #1a1410;
       overflow-x:hidden;
       cursor:none; /* keep the custom dot */
@@ -631,7 +631,7 @@
     .tag{
       font-family: 'VT323', monospace;
       font-size: 1.2rem;
-      padding: 4px 8px;
+      padding: 0;
       border: 2px solid rgba(26,20,16,0.22);
     }
     .project-links{
@@ -655,18 +655,19 @@
     }
     .click-me{
       position:absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 5;
+      right: 12px;
+      bottom: 12px;
+      z-index: 6;
       font-family: 'VT323', monospace;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: #1a1410;
-      background: rgba(245,245,245,0.92);
-      border: 2px solid rgba(26,20,16,0.25);
-      padding: 4px 8px;
+      color: #000;            /* pure black */
+      background: transparent;/* no box */
+      border: none;           /* no box */
+      padding: 0;
       pointer-events:none;
+      opacity: 0.95;
     }
     .project-card:hover .click-me{ opacity: 0.9; }
 
@@ -692,10 +693,7 @@
       border-color: rgba(26,20,16,0.35);
       background: rgba(0,0,0,0.03);
     }
-    .project-card.active .click-me{
-      background: rgba(255,138,0,0.92);
-      border-color: rgba(26,20,16,0.35);
-    }
+    .project-card.active .click-me{ color:#000; background:transparent; border:none; }
 
     /* expanded layout: image + text side by side on desktop */
     .project-card.active{
@@ -788,6 +786,19 @@
         grid-column: 1 / -1;
       }
     }
+
+    /* room for bottom-right click me label */
+    .project-body{ padding-bottom: 34px !important; }
+
+    /* Certificate links */
+    .cert-link{
+      color: #1a1410;
+      text-decoration: none;
+      border-bottom: 2px dotted rgba(26,20,16,0.45);
+      padding-bottom: 2px;
+      font-family: 'Courier Prime', monospace;
+    }
+    .cert-link:hover{ opacity: .7; }
 </style>
 </head>
 <body>
@@ -919,28 +930,6 @@
 
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">MARKETPLACE MANAGER</div>
-                    <div class="item-date">JULY 2024</div>
-                </div>
-                <div class="item-subtitle">Yandex Practicum - 256h Practice</div>
-                <div class="item-description">
-                    Data Analysis * Marketplace Management * E-commerce Basics * Business Communication
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">DIGITAL MARKETING & E-COMMERCE</div>
-                    <div class="item-date">JUNE 2024</div>
-                </div>
-                <div class="item-subtitle">Google Professional Certificate</div>
-                <div class="item-description">
-                    Marketing Analytics * E-commerce Management * Online Advertising
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
                     <div class="item-title">BACHELOR OF SCIENCE</div>
                     <div class="item-date">SEP 2021 - JUL 2025</div>
                 </div>
@@ -949,7 +938,22 @@
                     Economics & Management (English-taught) * Marketing * Statistics * Econometrics * Product Design * Business Analysis * Data Analytics
                 </div>
             </div>
-        </section>
+        
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">ADDITIONAL EDUCATION</div>
+                    <div class="item-date">CERTIFICATES</div>
+                </div>
+                <div class="item-subtitle">Download PDFs</div>
+                <ul class="item-description">
+                    <li><a class="cert-link" href="assets/cert-marketplace-manager.pdf" target="_blank" rel="noopener">Yandex Practicum — Marketplace Manager (256h)</a></li>
+                    <li><a class="cert-link" href="assets/cert-digital-marketing-ecommerce.pdf" target="_blank" rel="noopener">Google Professional Certificate — Digital Marketing &amp; E‑commerce</a></li>
+                </ul>
+                <div class="item-description" style="margin-top:10px; opacity:.9;">
+                    Put your certificate PDFs into <strong>assets/</strong> with these filenames (or rename links).
+                </div>
+            </div>
+</section>
 
         <!-- Skills Section -->
         <section class="content-section" id="skills">
