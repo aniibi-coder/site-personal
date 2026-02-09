@@ -798,6 +798,10 @@ display: flex;
       font-family: 'Courier Prime', monospace;
     }
     .doc-link:hover{ opacity: .7; }
+
+    /* --- Projects locked open: disable click interaction --- */
+    .project-card{ cursor: default !important; }
+
 </style>
 </head>
 <body>
@@ -995,8 +999,7 @@ display: flex;
       <div class="projects-grid">
 
         <article class="project-card">
-          <div class="click-me">click me</div>
-          <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
+                    <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
           <div class="project-body">
             <h3 class="project-title">Ridekit.fr — Gear Finder (Founder)</h3>
             <p class="project-desc">
@@ -1015,8 +1018,7 @@ display: flex;
         </article>
 
         <article class="project-card">
-          <div class="click-me">click me</div>
-          <img class="project-img" src="assets/picture2.png" alt="Marketplace work preview">
+                    <img class="project-img" src="assets/picture2.png" alt="Marketplace work preview">
           <div class="project-body">
             <h3 class="project-title">"Juk Aleevich" clothing brand</h3>
             <p class="project-desc">
@@ -1034,8 +1036,7 @@ display: flex;
         </article>
 
         <article class="project-card">
-          <div class="click-me">click me</div>
-          <img class="project-img" src="assets/picture3.png" alt="Startup preview">
+                    <img class="project-img" src="assets/picture3.png" alt="Startup preview">
           <div class="project-body">
             <h3 class="project-title">Mental AI Assistant — Startup</h3>
             <p class="project-desc">
@@ -1128,60 +1129,12 @@ display: flex;
     });
   
     
-    // Projects expand/collapse (CLICK ONLY)
-    const projectsGrid = document.querySelector('.projects-grid');
+    // Projects: always expanded (no click / no toggle)
     const projectCards = document.querySelectorAll('.project-card');
-
-    function resetProjects(){
-      if(!projectsGrid) return;
-      projectsGrid.classList.remove('is-focus');
-      projectCards.forEach(c => { c.classList.remove('active','shrink'); });
-    }
-
-    function focusCard(card){
-      if(!projectsGrid) return;
-      projectsGrid.classList.add('is-focus');
-      projectCards.forEach(c => {
-        if(c === card){
-          c.classList.add('active');
-          c.classList.remove('shrink');
-        } else {
-          c.classList.remove('active');
-          c.classList.add('shrink');
-        }
-      });
-    }
-
-    if(projectsGrid){
-      projectCards.forEach(card => {
-        card.addEventListener('click', (e)=> {
-          // allow clicking links inside without toggling
-          const a = e.target.closest('a');
-          if(a) return;
-
-          e.preventDefault();
-          const isActive = card.classList.contains('active');
-          if(isActive){
-            resetProjects();
-          } else {
-            focusCard(card);
-          }
-        });
-      });
-
-      // click outside Projects to close
-      document.addEventListener('click', (e)=>{
-        const inProjects = e.target.closest('.projects-grid');
-        if(!inProjects && projectsGrid.classList.contains('is-focus')){
-          resetProjects();
-        }
-      });
-
-      // ESC to close
-      document.addEventListener('keydown', (e)=>{
-        if(e.key === 'Escape') resetProjects();
-      });
+    if (projectCards.length) {
+      projectCards.forEach(c => c.classList.add('active'));
     }
 </script>
 </body>
 </html>
+
