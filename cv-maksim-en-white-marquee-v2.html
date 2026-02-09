@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maksim Shmelev - E-commerce Specialist</title>
+
+  <!-- Pixel vibe like the reference -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --cx: 50vw;
+      --cy: 50vh;
+    }
+
+    /* ALWAYS WHITE VERSION */
+    body{
+      font-family: 'Courier Prime', monospace;
+      background:#f5f5f5;
+      color:#000;
+      overflow-x:hidden;
+      cursor:none; /* keep the custom dot */
+    }
+
+    /* Orange text selection highlight */
+    ::selection{
+      background: #ff8a00;
+      color: #000;
+    }
+    ::-moz-selection{
+      background: #ff8a00;
+      color: #000;
+    }
+
+    /* Cursor dot (light-blue, like screenshot) */
+    .cursor-dot{
+      position: fixed;
+      width: 37px;
+      height: 37px;
+      border-radius: 999px;
+      background: rgba(142, 227, 255, 0.92);
+      pointer-events:none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Soft spotlight around cursor (bigger light) */
+    .cursor-spotlight{
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      pointer-events:none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle,
+        rgba(142,227,255,0.30) 0%,
+        rgba(142,227,255,0.16) 24%,
+        rgba(142,227,255,0.06) 46%,
+        rgba(142,227,255,0.00) 72%
+      );
+      filter: blur(0.2px);
+      mix-blend-mode: multiply;
+      opacity: 0.85;
+    }
+
+    /* Marquee bar (Rodds-like) */
+    .marquee-bar{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #1b1b1b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .marquee-eyes{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .marquee-eyes svg{
+      width: 34px;
+      height: 18px;
+      fill: #ffffff;
+      opacity: 0.92;
+    }
+
+    .marquee-eyes .dots{
+      font-family: 'VT323', monospace;
+      font-size: 26px;
+      letter-spacing: 2px;
+      line-height: 1;
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .marquee{
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 auto;
+      white-space: nowrap;
+      font-family: 'VT323', monospace;
+      font-size: 22px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .marquee .track{
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 16s linear infinite;
+    }
+
+    .marquee:hover .track{ animation-play-state: paused; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Original page styles (converted to white-only, removing black mode logic) */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 44px 40px 60px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 70px;
+      padding: 34px 0;
+    }
+
+    h1 {
+      font-family: 'VT323', monospace;
+      font-size: 5rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      letter-spacing: 3px;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-family: 'VT323', monospace;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 26px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      font-family: 'Courier Prime', monospace;
+    }
+
+    .contact-info a,
+    .contact-info span {
+      color: #000;
+      text-decoration: none;
+      transition: opacity 0.25s;
+    }
+
+    .contact-info a:hover { opacity: 0.55; }
+
+    .decorative-line {
+      width: 100%;
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        #000 0px,
+        #000 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      margin: 54px 0;
+      opacity: 0.85;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 3px solid #000;
+      color: #000;
+      padding: 15px 35px;
+      font-family: 'VT323', monospace;
+      font-size: 1.5rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.22s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: #000;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .content-section {
+      display: none;
+      animation: fadeIn 0.6s;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-family: 'VT323', monospace;
+      font-size: 3.5rem;
+      font-weight: 400;
+      margin-bottom: 34px;
+      border-bottom: 4px solid #000;
+      padding-bottom: 14px;
+      color: #000;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .item {
+      margin-bottom: 46px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 2px solid rgba(0, 0, 0, 0.10);
+      transition: all 0.22s;
+    }
+
+    .item:hover {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .item-title {
+      font-family: 'VT323', monospace;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #000;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .item-date {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1rem;
+      color: #000;
+      opacity: 0.9;
+    }
+
+    .item-subtitle {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1rem;
+      color: #000;
+      margin-bottom: 15px;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .item-description,
+    .item-description li {
+      line-height: 1.8;
+      color: #000;
+      font-family: 'Courier Prime', monospace;
+    }
+
+    .item-description li {
+      margin-bottom: 10px;
+      margin-left: 25px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-category {
+      background: rgba(0, 0, 0, 0.02);
+      padding: 30px;
+      border: 3px solid rgba(0, 0, 0, 0.12);
+      transition: all 0.22s;
+    }
+
+    .skill-category:hover {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.22);
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      font-family: 'VT323', monospace;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: 400;
+      color: #000;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .skill-category p {
+      line-height: 1.8;
+      color: #000;
+      font-family: 'Courier Prime', monospace;
+      opacity: 0.95;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 40px 10px;
+      font-family: 'VT323', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    footer p { color: #000; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3rem; }
+      .subtitle { font-size: 1.3rem; }
+      .container { padding: 34px 18px 40px; }
+      .nav-btn { padding: 12px 25px; font-size: 1.2rem; }
+      .section-title { font-size: 2.5rem; }
+      .item-title { font-size: 1.5rem; }
+      .cursor-dot{ width:28px;height:28px; }
+      .cursor-spotlight{ width:420px;height:420px; }
+      .marquee{ font-size:20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Rodds-like marquee bar -->
+  <div class="marquee-bar" aria-label="Marquee">
+    <div class="marquee-eyes" aria-hidden="true">
+      <!-- simple pixel-ish eyes icon -->
+      <svg viewBox="0 0 120 60" role="img" aria-label="eyes">
+        <path d="M10 30c10-14 25-22 40-22s30 8 40 22c-10 14-25 22-40 22S20 44 10 30Z"></path>
+        <circle cx="50" cy="30" r="9"></circle>
+      </svg>
+      <svg viewBox="0 0 120 60" role="img" aria-label="eyes">
+        <path d="M10 30c10-14 25-22 40-22s30 8 40 22c-10 14-25 22-40 22S20 44 10 30Z"></path>
+        <circle cx="50" cy="30" r="9"></circle>
+      </svg>
+      <div class="dots">•</div>
+    </div>
+
+    <div class="marquee">
+      <div class="track">
+        2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor effects -->
+  <div class="cursor-spotlight" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Main Content (from your EN file) -->
+  <div class="container">
+        <header>
+            <h1>MAKSIM SHMELEV</h1>
+            <div class="subtitle">E-COMMERCE SPECIALIST & PRODUCT MANAGER</div>
+            <div class="contact-info">
+                <a href="mailto:shmelevmaksim4studies@gmail.com">shmelevmaksim4studies@gmail.com</a>
+                <span>*</span>
+                <a href="tel:+33777101576">+33 777 101 576</a>
+                <span>*</span>
+                <a href="#" target="_blank">LinkedIn</a>
+                <span>*</span>
+                <span>Bordeaux, Paris, EU</span>
+            </div>
+        </header>
+
+        <div class="decorative-line"></div>
+
+        <nav>
+            <button class="nav-btn active" data-section="about">ABOUT</button>
+            <button class="nav-btn" data-section="experience">EXPERIENCE</button>
+            <button class="nav-btn" data-section="education">EDUCATION</button>
+            <button class="nav-btn" data-section="skills">SKILLS</button>
+            <button class="nav-btn" data-section="projects">PROJECTS</button>
+        </nav>
+
+        <!-- About Section -->
+        <section class="content-section active" id="about">
+            <h2 class="section-title">>>> ABOUT</h2>
+            <div class="item">
+                <div class="item-description">
+                    <p>
+                        Passionate E-commerce Specialist with expertise in marketplace management, data analysis, and product strategy. 
+                        Currently pursuing a Master's in Marketing at KEDGE Business School, combining solid economics training with 
+                        practical experience in e-commerce and product management.
+                    </p>
+                    <p>
+                        Increased orders by 21% on Wildberries through SEO optimization, co-launched a mental health startup, 
+                        and developed several entrepreneurial projects including Ridekit.fr for winter sports enthusiasts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="content-section" id="experience">
+            <h2 class="section-title">>>> EXPERIENCE</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">PRODUCT MANAGER</div>
+                    <div class="item-date">FEB 2025 - AUG 2025</div>
+                </div>
+                <div class="item-subtitle">Fuh! - Startup Degree Program</div>
+                <ul class="item-description">
+                    <li>Co-launched subscription-based mental health startup, working on go-to-market, branding, and product strategy</li>
+                    <li>Analyzed user behavior, engagement, and retention to identify growth and UX issues</li>
+                    <li>Drove product improvements by translating user feedback and performance data into actionable changes</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">E-COMMERCE INTERN</div>
+                    <div class="item-date">OCT 2024 - FEB 2025</div>
+                </div>
+                <div class="item-subtitle">Socialist LLC</div>
+                <ul class="item-description">
+                    <li>Built media plans and performance briefs for Vivienne Sabo, Air Tokyo, and Surf Coffee</li>
+                    <li>Increased orders by 21% on Wildberries through SEO keyword optimization</li>
+                    <li>Managed end-to-end product publication (content upload, updates, compliance) for clients</li>
+                    <li>Optimized marketplace ads (bids/budgets/targeting) and created banners + product cards</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">RESEARCHER</div>
+                    <div class="item-date">JUN 2023 - JUN 2024</div>
+                </div>
+                <div class="item-subtitle">PRUE - Innovation Management with AI Team</div>
+                <ul class="item-description">
+                    <li>Gathered and cleaned datasets for training and validating analytical research models</li>
+                    <li>Analyzed datasets to comply with requirements, compared ML behavior and adjusted settings</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="content-section" id="education">
+            <h2 class="section-title">>>> EDUCATION</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">MASTER OF SCIENCE, MARKETING</div>
+                    <div class="item-date">SEP 2025 - JUL 2027</div>
+                </div>
+                <div class="item-subtitle">KEDGE Business School, Bordeaux</div>
+                <div class="item-description">
+                    Brand & Product Management * Google Analytics * Marketing Decision Making * Data Analytics & AI * Financial Performance
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">MARKETPLACE MANAGER</div>
+                    <div class="item-date">JULY 2024</div>
+                </div>
+                <div class="item-subtitle">Yandex Practicum - 256h Practice</div>
+                <div class="item-description">
+                    Data Analysis * Marketplace Management * E-commerce Basics * Business Communication
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">DIGITAL MARKETING & E-COMMERCE</div>
+                    <div class="item-date">JUNE 2024</div>
+                </div>
+                <div class="item-subtitle">Google Professional Certificate</div>
+                <div class="item-description">
+                    Marketing Analytics * E-commerce Management * Online Advertising
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">BACHELOR OF SCIENCE</div>
+                    <div class="item-date">SEP 2021 - JUL 2025</div>
+                </div>
+                <div class="item-subtitle">Plekhanov Russian University of Economics, Moscow</div>
+                <div class="item-description">
+                    Economics & Management (English-taught) * Marketing * Statistics * Econometrics * Product Design * Business Analysis * Data Analytics
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="content-section" id="skills">
+            <h2 class="section-title">>>> SKILLS</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>E-COMMERCE & MARKETING</h3>
+                    <p>Marketplace ads (bids/budgets/targeting) * KPI analytics (CTR/CVR/ROAS/ACoS) * Pricing & competitor benchmarking * GA4 * SEO optimization</p>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ANALYSIS & TOOLS</h3>
+                    <p>Excel (Advanced) * Data analysis * Google Analytics * Marketing analytics * Performance tracking</p>
+                </div>
+
+                <div class="skill-category">
+                    <h3>SOFT SKILLS</h3>
+                    <p>Time management * Problem solving * Team communication * Product strategy * Project management</p>
+                </div>
+
+                <div class="skill-category">
+                    <h3>LANGUAGES</h3>
+                    <p>Russian (Native) * English (C1, IELTS 7.5) * French (A2)</p>
+                </div>
+
+                <div class="skill-category">
+                    <h3>INTERESTS</h3>
+                    <p>Brand creation * Coding * Gym (Lifting) * Entrepreneurship</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="content-section" id="projects">
+            <h2 class="section-title">>>> PROJECTS</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">RIDEKIT.FR</div>
+                    <div class="item-date">AUG 2025 - IN PROGRESS</div>
+                </div>
+                <div class="item-subtitle">Founder</div>
+                <ul class="item-description">
+                    <li>Created website for skiing and snowboarding beginners, developed project logic</li>
+                    <li>Built interactive selective options leading to affiliate links</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">MENTAL AI-ASSISTANT STARTUP</div>
+                    <div class="item-date">FEB 2024</div>
+                </div>
+                <div class="item-subtitle">Founding Member</div>
+                <ul class="item-description">
+                    <li>Participated in founding an AI-based mental health assistant startup</li>
+                    <li>Led financial modeling, budget allocation, and IT development</li>
+                    <li>Received $10,000 government grant (Innovation Fund, 5th wave)</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">CLOTHING BRAND</div>
+                    <div class="item-date">OCT 2023</div>
+                </div>
+                <div class="item-subtitle">Founder</div>
+                <ul class="item-description">
+                    <li>Created website, design, and platform for selling ready-made clothing (mostly T-shirts)</li>
+                    <li>Participated in advertising and first promo video creation</li>
+                    <li>Found manufacturers, contacted and set up logistics</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="decorative-line"></div>
+
+        <footer>
+            <p>© 2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES</p>
+        </footer>
+    
+
+  <script>
+    // Cursor effects (blue dot + big spotlight)
+    const dot = document.querySelector('.cursor-dot');
+    const spot = document.querySelector('.cursor-spotlight');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      dot.style.left = x + 'px';
+      dot.style.top  = y + 'px';
+      spot.style.left = x + 'px';
+      spot.style.top  = y + 'px';
+    });
+
+    // Navigation (keep your behavior)
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.content-section');
+
+    navBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetSection = btn.getAttribute('data-section');
+        navBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === targetSection) section.classList.add('active');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
