@@ -576,6 +576,70 @@
       transform: translate(-50%,-50%);
       transition: transform .06s linear;
     }
+
+    /* --- Projects cards with images --- */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .project-card{
+      border: 2px solid rgba(26,20,16,0.20);
+      background: rgba(0,0,0,0.02);
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .project-card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(26,20,16,0.35);
+      background: rgba(0,0,0,0.03);
+    }
+    .project-img{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display:block;
+      image-rendering: auto;
+    }
+    .project-body{
+      padding: 18px 18px 16px;
+    }
+    .project-title{
+      font-family: 'VT323', monospace;
+      font-size: 1.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .project-desc{
+      line-height: 1.65;
+      opacity: .92;
+      margin-bottom: 12px;
+    }
+    .project-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tag{
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      padding: 4px 8px;
+      border: 2px solid rgba(26,20,16,0.22);
+    }
+    .project-links{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .project-link{
+      font-family: 'VT323', monospace;
+      font-size: 1.3rem;
+      text-decoration:none;
+      border-bottom: 2px dotted rgba(26,20,16,0.35);
+      padding-bottom: 2px;
+    }
+    .project-link:hover{ opacity: .65; }
 </style>
 </head>
 <body>
@@ -773,45 +837,68 @@
 
         <!-- Projects Section -->
         <section class="content-section" id="projects">
-            <h2 class="section-title">>>> PROJECTS</h2>
             
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">RIDEKIT.FR</div>
-                    <div class="item-date">AUG 2025 - IN PROGRESS</div>
-                </div>
-                <div class="item-subtitle">Founder</div>
-                <ul class="item-description">
-                    <li>Created website for skiing and snowboarding beginners, developed project logic</li>
-                    <li>Built interactive selective options leading to affiliate links</li>
-                </ul>
-            </div>
+      <h2 class="section-title">Projects</h2>
 
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">MENTAL AI-ASSISTANT STARTUP</div>
-                    <div class="item-date">FEB 2024</div>
-                </div>
-                <div class="item-subtitle">Founding Member</div>
-                <ul class="item-description">
-                    <li>Participated in founding an AI-based mental health assistant startup</li>
-                    <li>Led financial modeling, budget allocation, and IT development</li>
-                    <li>Received $10,000 government grant (Innovation Fund, 5th wave)</li>
-                </ul>
-            </div>
+      <div class="projects-grid">
 
-            <div class="item">
-                <div class="item-header">
-                    <div class="item-title">CLOTHING BRAND</div>
-                    <div class="item-date">OCT 2023</div>
-                </div>
-                <div class="item-subtitle">Founder</div>
-                <ul class="item-description">
-                    <li>Created website, design, and platform for selling ready-made clothing (mostly T-shirts)</li>
-                    <li>Participated in advertising and first promo video creation</li>
-                    <li>Found manufacturers, contacted and set up logistics</li>
-                </ul>
+        <article class="project-card">
+          <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
+          <div class="project-body">
+            <h3 class="project-title">Ridekit.fr — Gear Finder (Founder)</h3>
+            <p class="project-desc">
+              Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Product</span>
+              <span class="tag">Affiliate</span>
+              <span class="tag">Front-end</span>
             </div>
+            <div class="project-links">
+              <a class="project-link" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-img" src="assets/picture2.png" alt="Marketplace work preview">
+          <div class="project-body">
+            <h3 class="project-title">Wildberries Growth — SEO + Ads</h3>
+            <p class="project-desc">
+              Improved keyword SEO and ad efficiency to increase orders (+21%) and optimize marketplace performance.
+            </p>
+            <div class="project-tags">
+              <span class="tag">E-commerce</span>
+              <span class="tag">SEO</span>
+              <span class="tag">Ads</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="#" target="_blank" rel="noopener">Case</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-img" src="assets/picture3.png" alt="Startup preview">
+          <div class="project-body">
+            <h3 class="project-title">Mental AI Assistant — Startup</h3>
+            <p class="project-desc">
+              Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Startup</span>
+              <span class="tag">GTM</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="#" target="_blank" rel="noopener">Deck</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
         </section>
 
         <div class="decorative-line"></div>
