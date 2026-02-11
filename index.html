@@ -966,6 +966,19 @@ display: flex;
       .consent-btn{ width: 100%; text-align: center; }
     }
 
+  
+    /* Disable native cursor everywhere (keep custom blue dot) */
+    html, body,
+    a, button, input, textarea, select, option,
+    .project-card,
+    .nav-btn,
+    .consent-btn,
+    .project-link,
+    .cert-link,
+    .doc-link {
+      cursor: none !important;
+    }
+
   </style>
 </head>
 <body>
@@ -1372,6 +1385,10 @@ display: flex;
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
