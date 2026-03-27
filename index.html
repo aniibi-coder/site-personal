@@ -747,6 +747,21 @@ display: flex;
     }
     .project-card.active .click-me{ color:#000; background:transparent; border:none; }
 
+    .project-card.featured{
+      border: 3px solid rgba(38, 28, 22, 0.78);
+      background: rgba(58, 40, 28, 0.18);
+      box-shadow:
+        0 0 0 2px rgba(38, 28, 22, 0.22),
+        0 0 18px rgba(111, 78, 55, 0.22),
+        0 0 34px rgba(92, 63, 43, 0.16),
+        0 14px 32px rgba(20, 14, 10, 0.18);
+    }
+    .project-card.featured .project-title{
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 6px;
+    }
+
     /* expanded layout: image + text side by side on desktop */
     .project-card.active{
       display:grid;
@@ -1164,21 +1179,35 @@ display: flex;
             
       <h2 class="section-title">>>> PROJECTS</h2>
       <div class="projects-grid">
-        
-<article class="project-card">
+        <article class="project-card featured">
   <img class="project-img" src="assets/picture5.png" alt="(Re)Bonjour project preview">
   <div class="project-body">
     <h3 class="project-title">(Re)Bonjour — Capstone Project</h3>
     <p class="project-desc">
-      Description coming soon.
+      University capstone project where I supported startup Opack in developing and planning its B2B market entry strategy. Worked on marketing research and business improvement for Rebonjour — a recyclable packaging solution. More about the company: https://www.opack.fr/
     </p>
     <div class="project-links">
       <a class="project-link" href="assets/REBonjour_Final_Strategy_Report.pdf" target="_blank" rel="noopener">Strategy Report</a>
       <a class="project-link" href="assets/REBonjour_Presentation.pdf" target="_blank" rel="noopener">Presentation</a>
+      <a class="project-link" href="https://www.opack.fr/" target="_blank" rel="noopener">Website</a>
     </div>
   </div>
 </article>
-        
+
+        <article class="project-card featured">
+                    <img class="project-img" src="assets/picture3.png" alt="Startup preview">
+          <div class="project-body">
+            <h3 class="project-title">Fuh — Mental AI Assistant</h3>
+            <p class="project-desc">
+              Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
+            </p>
+            <div class="project-links">
+              <a class="project-link" href="assets/fuh.pdf" target="_blank" rel="noopener">fuh.pdf</a>
+              <a class="project-link" href="assets/fuh2.pdf" target="_blank" rel="noopener">fuh2.pdf</a>
+            </div>
+          </div>
+        </article>
+
         <article class="project-card">
                     <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
           <div class="project-body">            
@@ -1202,20 +1231,6 @@ display: flex;
             </p>
             <div class="project-links">
               <a class="project-link" href="https://vk.link/jukalexeevich" target="_blank" rel="noopener">VK</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-                    <img class="project-img" src="assets/picture3.png" alt="Startup preview">
-          <div class="project-body">
-            <h3 class="project-title">Fuh — Mental AI Assistant</h3>
-            <p class="project-desc">
-              Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
-            </p>
-            <div class="project-links">
-              <a class="project-link" href="assets/fuh.pdf" target="_blank" rel="noopener">fuh.pdf</a>
-              <a class="project-link" href="assets/fuh2.pdf" target="_blank" rel="noopener">fuh2.pdf</a>
             </div>
           </div>
         </article>
@@ -1403,6 +1418,8 @@ display: flex;
 </script>
 </body>
 </html>
+
+
 
 
 
