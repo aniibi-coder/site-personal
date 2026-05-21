@@ -30,23 +30,93 @@
  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
  <link rel="manifest" href="/site.webmanifest">
   
-  <!-- Basic SEO -->
-  <meta name="description" content="Personal site of Maksim Shmelev with my Projects, experience, education, and skills.">
-  <meta name="keywords" content="Maksim Shmelev, e-commerce, product manager, marketing, GA4, SEO, marketplace, portfolio, CV, internship, France, Anglais, Marketing student">
+  <!-- Primary SEO -->
+  <meta name="description" content="Maksim Shmelev — Bras Droit du CEO chez Atelier Box, Paris. Spécialiste E-Commerce & Marketing Digital. MSc Digital Marketing IESEG. Disponible à partir de septembre 2026.">
+  <meta name="keywords" content="Maksim Shmelev, e-commerce, marketing digital, product manager, GA4, SEO, marketplace, Atelier Box, IESEG, KEDGE, Paris, Bordeaux, stage marketing, alternance, portfolio, CV">
   <meta name="author" content="Maksim Shmelev">
-  <meta name="robots" content="index,follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#f2eee7">
+  <link rel="alternate" hreflang="en" href="https://maksim-personal.com/">
+  <link rel="alternate" hreflang="fr" href="https://maksim-personal.com/">
+  <link rel="alternate" hreflang="x-default" href="https://maksim-personal.com/">
 
-  <!-- Open Graph (social preview) -->
-  <meta property="og:title" content="Personal site for Maksim Shmelev">
-  <meta property="og:description" content="E-commerce Specialist & Product Manager — projects, experience, education, skills.">
-  <meta property="og:type" content="website">
-  <!-- Put a real full URL here when you have it -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Maksim Shmelev — E-Commerce & Digital Marketing Specialist">
+  <meta property="og:description" content="Bras Droit du CEO @ Atelier Box, Paris. MSc Digital Marketing IESEG. Disponible septembre 2026.">
+  <meta property="og:type" content="profile">
   <meta property="og:url" content="https://maksim-personal.com/">
-  <!-- Put a preview image in /assets/ and change the name below -->
+  <meta property="og:image" content="https://maksim-personal.com/assets/picture1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="profile:first_name" content="Maksim">
+  <meta property="profile:last_name" content="Shmelev">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Personal site — Maksim Shmelev">
-  <meta name="twitter:description" content="Personal website portfolio of Maksim Shmelev">
-  <meta name="twitter:image" content="assets/og-image.png">
+  <meta name="twitter:title" content="Maksim Shmelev — E-Commerce & Digital Marketing">
+  <meta name="twitter:description" content="Bras Droit du CEO @ Atelier Box. MSc Digital Marketing IESEG. Paris.">
+  <meta name="twitter:image" content="https://maksim-personal.com/assets/picture1.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Maksim Shmelev",
+    "url": "https://maksim-personal.com",
+    "image": "https://maksim-personal.com/assets/picture1.png",
+    "jobTitle": "Bras Droit du CEO",
+    "birthDate": "2003",
+    "description": "E-Commerce & Digital Marketing Specialist based in Paris. MSc Digital Marketing at IESEG. Available from September 2026.",
+    "email": "shmelevmaksim4studies@gmail.com",
+    "telephone": "+33777101576",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Paris",
+      "addressCountry": "FR"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Atelier Box",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Paris",
+        "addressCountry": "FR"
+      }
+    },
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "IESEG School of Management",
+        "url": "https://www.ieseg.fr"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "KEDGE Business School",
+        "url": "https://www.kedge.edu"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Plekhanov Russian University of Economics"
+      }
+    ],
+    "knowsLanguage": [
+      {"@type": "Language", "name": "Russian"},
+      {"@type": "Language", "name": "English"},
+      {"@type": "Language", "name": "French"}
+    ],
+    "knowsAbout": [
+      "E-Commerce","SEO","Google Analytics 4","Marketplace Management",
+      "Digital Marketing","Product Management","Data Analysis","Marketing Strategy"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/maksim-shmelev/",
+      "https://github.com/aniibi-coder"
+    ]
+  }
+  </script>
   <!-- ===== /SEO + FAVICON ===== -->
 
 <!-- Pixel vibe like the reference -->
@@ -64,11 +134,6 @@
     body{
       font-family: 'Courier Prime', monospace;
       background:#f2eee7;
-      background-image:
-        radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1.6px),
-        radial-gradient(circle, rgba(0,0,0,0.05) 0.8px, transparent 1.4px);
-      background-size: 10px 10px, 16px 16px;
-      background-position: 0 0, 4px 6px;
       color: #1a1410;
       overflow-x:hidden;
       cursor:none; /* keep the custom dot */
@@ -87,12 +152,12 @@
     /* Cursor dot (light-blue, like screenshot) */
     .cursor-dot{
       position: fixed;
-      width: 37px;
-      height: 37px;
+      width: 14px;
+      height: 14px;
       border-radius: 999px;
       background: rgba(255, 138, 0, 0.88);
       pointer-events:none;
-      z-index: 100001;
+      z-index: 100010;
       transform: translate(-50%, -50%);
     
       transition: background .12s ease, box-shadow .12s ease;
@@ -197,7 +262,7 @@
 
     h1 {
       font-family: 'VT323', monospace;
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 400;
       margin-bottom: 18px;
       letter-spacing: 3px;
@@ -286,6 +351,17 @@ display: flex;
       letter-spacing: 2px;
     }
 
+    /* Smaller name for Russian (Cyrillic wider) */
+    html[lang="ru"] h1 { font-size: 3.2rem; }
+
+    /* Smaller nav buttons for Russian and French (longer words) */
+    html[lang="ru"] .nav-btn,
+    html[lang="fr"] .nav-btn {
+      padding: 12px 18px;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+
     .nav-btn:hover,
     .nav-btn.active {
       background: #1a1410;
@@ -323,13 +399,14 @@ display: flex;
       margin-bottom: 46px;
       padding: 30px;
       background: rgba(0, 0, 0, 0.02);
-      border: 2px solid rgba(0, 0, 0, 0.10);
+      border: none;
+      border-left: 3px solid #ff8a00;
       transition: all 0.22s;
     }
 
     .item:hover {
       background: rgba(0, 0, 0, 0.04);
-      border-color: rgba(0, 0, 0, 0.18);
+      border-left-color: #e8320a;
     }
 
     .item-header {
@@ -378,40 +455,30 @@ display: flex;
       margin-left: 25px;
     }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+    .skill-wall {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+      padding: 8px 0;
+      min-height: 260px;
+      align-content: flex-start;
     }
 
-    .skill-category {
-      background: rgba(0, 0, 0, 0.02);
-      padding: 30px;
-      border: 3px solid rgba(0, 0, 0, 0.12);
-      transition: all 0.22s;
-    }
-
-    .skill-category:hover {
-      background: rgba(0, 0, 0, 0.04);
-      border-color: rgba(0, 0, 0, 0.22);
-      transform: translateY(-5px);
-    }
-
-    .skill-category h3 {
+    .skill-tag {
       font-family: 'VT323', monospace;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      font-weight: 400;
-      color: #1a1410;
-      letter-spacing: 1px;
+      font-size: 1.45rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      color: #1a1410;
+      opacity: 0.38;
+      transition: opacity 1.4s ease, color 1.4s ease;
+      cursor: default;
+      user-select: none;
     }
 
-    .skill-category p {
-      line-height: 1.8;
-      color: #1a1410;
-      font-family: 'Courier Prime', monospace;
-      opacity: 0.95;
+    .skill-tag.lit {
+      opacity: 1 !important;
+      text-shadow: 0 0 8px currentColor;
     }
 
     footer {
@@ -426,15 +493,97 @@ display: flex;
     footer p { color: #1a1410; }
 
     @media (max-width: 768px) {
-      h1 { font-size: 3rem; }
-      .subtitle { font-size: 1.3rem; }
-      .container { padding: 34px 18px 40px; }
-      .nav-btn { padding: 12px 25px; font-size: 1.2rem; }
-      .section-title { font-size: 2.5rem; }
+
+      /* --- Layout --- */
+      .container { padding: 20px 16px 40px; }
+
+      /* --- Header --- */
+      h1 { font-size: 2.6rem; letter-spacing: 1px; margin-bottom: 10px; }
+      .subtitle { font-size: 1.2rem; letter-spacing: 1px; }
+      .contact-plain { font-size: 0.78rem; line-height: 1.8; }
+      header { margin-bottom: 24px; padding: 14px 0; }
+
+      /* --- Marquee --- */
+      .marquee { font-size: 14px; }
+
+      /* --- Language switcher --- */
+      .lang-switch { padding-left: 10px; }
+      .lang-btn { padding: 3px 7px; font-size: 0.95rem; }
+
+      /* --- Nav --- */
+      nav {
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .nav-btn {
+        padding: 9px 14px;
+        font-size: 1rem;
+        border-width: 2px;
+        letter-spacing: 1px;
+        flex: 1 1 calc(33% - 8px);
+        text-align: center;
+      }
+
+      /* --- Items --- */
+      .item {
+        padding: 18px 16px;
+        margin-bottom: 24px;
+      }
+      .item-header {
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 12px;
+        align-items: flex-start;
+      }
       .item-title { font-size: 1.5rem; }
-      .cursor-dot{ width:28px;height:28px; }
-      .cursor-spotlight{ width:420px;height:420px; }
-      .marquee{ font-size:20px; }
+      .item-date { font-size: 0.85rem; }
+      .item-subtitle { font-size: 0.9rem; }
+      .item-description,
+      .item-description li { font-size: 0.88rem; line-height: 1.7; }
+      .item-description li { margin-left: 16px; margin-bottom: 8px; }
+
+      /* --- Photo strips --- */
+      .photo-card { flex: 0 0 180px; height: 125px; }
+      .photo-card--about { flex: 0 0 280px; height: 210px; }
+      #strip-plekhanov .photo-card { flex: 0 0 200px; height: 140px; }
+
+      /* --- Skills wall --- */
+      .skill-wall { gap: 10px 14px; min-height: 180px; }
+      .skill-tag { font-size: 1.1rem; }
+
+      /* --- Projects --- */
+      .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+      .project-card { padding: 0; }
+      .project-card .project-img { width: 100%; height: 180px; }
+      .project-body { padding: 16px !important; }
+      .project-title { font-size: 1.2rem; }
+      .project-desc { font-size: 0.85rem; }
+
+      /* --- Decorative line --- */
+      .decorative-line { margin: 20px 0; }
+
+      /* --- Cursor: hide on touch --- */
+      .cursor-dot { display: none; }
+      .cursor-spotlight { display: none; }
+      body { cursor: auto; }
+      html, body, a, button, input, textarea, select, option,
+      .nav-btn, .consent-btn, .project-link, .cert-link, .doc-link {
+        cursor: auto !important;
+      }
+
+      /* --- Footer --- */
+      footer { padding: 20px 16px; font-size: 0.85rem; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 2rem; }
+      .subtitle { font-size: 1rem; }
+      .nav-btn {
+        flex: 1 1 calc(50% - 8px);
+        font-size: 0.9rem;
+        padding: 8px 10px;
+      }
+      .photo-card--about { flex: 0 0 240px; height: 180px; }
     }
   
     /* Eyes (fixed so they don't clip on the edge, and they follow cursor) */
@@ -638,16 +787,28 @@ display: flex;
     .project-card{
       display:flex;
       flex-direction:column;
-
-      border: 2px solid rgba(26,20,16,0.20);
+      border: none;
+      border-left: 3px solid #ff8a00;
       background: rgba(0,0,0,0.02);
       overflow:hidden;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      transition: background .18s ease, border-left-color .18s ease;
     }
     .project-card:hover{
-      transform: translateY(-4px);
-      border-color: rgba(26,20,16,0.35);
-      background: rgba(0,0,0,0.03);
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* Featured projects — orange glow always on */
+    .project-card.featured,
+    .project-card.featured.active {
+      border: none !important;
+      border-left: 3px solid #ff8a00 !important;
+      background: rgba(255,138,0,0.05) !important;
+      box-shadow: 0 0 24px rgba(255,138,0,0.20), inset 0 0 40px rgba(255,138,0,0.04) !important;
+    }
+    .project-card.featured:hover,
+    .project-card.featured.active:hover {
+      background: rgba(255,138,0,0.09) !important;
+      box-shadow: 0 0 36px rgba(255,138,0,0.30), inset 0 0 50px rgba(255,138,0,0.07) !important;
     }
     .project-img{
       border-radius: 2px;
@@ -694,8 +855,9 @@ display: flex;
     .project-link{
       font-family: 'VT323', monospace;
       font-size: 1.3rem;
+      color: #ff8a00;
       text-decoration:none;
-      border-bottom: 2px dotted rgba(26,20,16,0.35);
+      border-bottom: 2px dotted rgba(255,138,0,0.45);
       padding-bottom: 2px;
     }
     .project-link:hover{ opacity: .65; }
@@ -742,14 +904,14 @@ display: flex;
       transform: none;
       opacity: 1;
       max-height: none;
-      border-color: rgba(26,20,16,0.35);
+      border-left-color: #ff8a00;
       background: rgba(0,0,0,0.03);
     }
     .project-card.active .click-me{ color:#000; background:transparent; border:none; }
 
     .project-card.featured{
-      border: 3px solid rgba(38, 28, 22, 0.78);
-      background: rgba(58, 40, 28, 0.18);
+      /* styles handled above */
+      background: rgba(58, 40, 28, 0.0);
       box-shadow:
         0 0 0 2px rgba(38, 28, 22, 0.22),
         0 0 18px rgba(111, 78, 55, 0.22),
@@ -857,9 +1019,186 @@ display: flex;
     /* room for bottom-right click me label */
     .project-body{ padding-bottom: 34px !important; }
 
+    /* ===== Photo gallery strip ===== */
+    .photo-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 14px 0 10px;
+      margin-top: 18px;
+      /* scroll-snap-type: x mandatory; */
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+    }
+    .photo-strip:active { cursor: grabbing; }
+    .photo-strip img { user-select: none; -webkit-user-drag: none; }
+    .photo-strip::-webkit-scrollbar { height: 5px; }
+    .photo-strip::-webkit-scrollbar-track {
+      background: rgba(26,20,16,0.10);
+      border-radius: 999px;
+    }
+    .photo-strip::-webkit-scrollbar-thumb {
+      background: #ff8a00;
+      border-radius: 999px;
+    }
+    .photo-strip::-webkit-scrollbar-thumb:hover {
+      background: #e8320a;
+    }
+    /* Firefox */
+    .photo-strip {
+      scrollbar-width: thin;
+      scrollbar-color: #ff8a00 rgba(26,20,16,0.10);
+    }
+
+    .photo-card {
+      flex: 0 0 220px;
+      height: 150px;
+      border: none;
+      background: rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      /* scroll-snap-align: start; */
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .photo-card:hover { border-color: transparent; }
+
+    /* Plekhanov strip — 30% bigger */
+    #strip-plekhanov .photo-card {
+      flex: 0 0 286px;
+      height: 195px;
+    }
+
+    /* About photo strip — bigger, no border */
+    .photo-strip--about {
+      gap: 10px;
+      padding-bottom: 8px;
+    }
+    .photo-card--about {
+      flex: 0 0 480px;
+      height: 352px;
+      border: none;
+      border-radius: 4px;
+      background: rgba(26,20,16,0.06);
+    }
+    .photo-card--about:hover { border-color: transparent; }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 70%;
+      display: block;
+    }
+
+    .photo-card__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-card__icon {
+      font-size: 2rem;
+      opacity: 0.18;
+    }
+
+    .photo-card__label {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.22;
+    }
+
+    /* Journey track */
+    .journey-item { padding: 24px 30px; }
+    .journey-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .journey-stop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+    .journey-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(26,20,16,0.25);
+      border: 2px solid rgba(26,20,16,0.25);
+    }
+    .journey-stop.active .journey-dot {
+      background: #ff8a00;
+      border-color: #ff8a00;
+      box-shadow: 0 0 10px rgba(255,138,0,0.5);
+      width: 14px;
+      height: 14px;
+    }
+    .journey-city {
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(26,20,16,0.45);
+    }
+    .journey-stop.active .journey-city {
+      color: #ff8a00;
+    }
+    .journey-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      color: rgba(26,20,16,0.38);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .journey-stop.active .journey-sub {
+      color: rgba(255,138,0,0.7);
+    }
+    .journey-stop.upcoming .journey-dot {
+      background: transparent;
+      border: 2px dashed rgba(255,138,0,0.5);
+      width: 12px;
+      height: 12px;
+    }
+    .journey-stop.upcoming .journey-city {
+      color: rgba(255,138,0,0.5);
+    }
+    .journey-stop.upcoming .journey-sub {
+      color: rgba(255,138,0,0.4);
+    }
+    .journey-line {
+      flex: 1 1 40px;
+      min-width: 30px;
+      max-width: 80px;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(26,20,16,0.20) 0px,
+        rgba(26,20,16,0.20) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      margin-bottom: 28px;
+    }
+
     /* Certificate links */
     .cert-link{
-      color: #1a1410;
+      color: #ff8a00;
       text-decoration: none;
       border-bottom: 2px dotted rgba(26,20,16,0.45);
       padding-bottom: 2px;
@@ -869,7 +1208,7 @@ display: flex;
 
     /* Doc links (assets files) */
     .doc-link{
-      color: #1a1410;
+      color: #ff8a00;
       text-decoration: none;
       border-bottom: 2px dotted rgba(26,20,16,0.45);
       padding-bottom: 2px;
@@ -987,10 +1326,13 @@ display: flex;
     }
 
   
-    /* Disable native cursor everywhere (keep custom blue dot) */
+    /* Disable native cursor everywhere (keep custom orange dot) */
     html, body,
     a, button, input, textarea, select, option,
+    img,
     .project-card,
+    .photo-card,
+    .photo-strip,
     .nav-btn,
     .consent-btn,
     .project-link,
@@ -998,24 +1340,103 @@ display: flex;
     .doc-link {
       cursor: none !important;
     }
+
+    /* === Background glow + grain (goose.gg technique) === */
+    /* Language switcher — inside marquee bar */
+    .lang-switch {
+      position: relative;
+      flex: 0 0 auto;
+      display: flex;
+      gap: 0;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 16px;
+      margin-left: 4px;
+    }
+    .lang-btn {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.40);
+      cursor: pointer;
+      transition: all .18s;
+    }
+    .lang-btn.active {
+      color: #ff8a00;
+    }
+    .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.80); }
+
+    #bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(closest-side, rgba(255,138,0,0.55), rgba(242,238,231,0)),
+        radial-gradient(closest-side, rgba(200,30,0,0.40),  rgba(242,238,231,0));
+      background-size:     130vmax 130vmax, 80vmax 80vmax;
+      background-position: -80vmax -80vmax, 60vmax -30vmax;
+      background-repeat:   no-repeat;
+      animation: bgMove 8s linear infinite, bgColor 6s ease-in-out infinite;
+    }
+
+    @keyframes bgMove {
+      0%,100% { background-size:130vmax 130vmax,80vmax 80vmax;  background-position:-80vmax -80vmax,60vmax -30vmax; }
+      25%     { background-size:100vmax 100vmax,90vmax 90vmax;  background-position:-60vmax -90vmax,50vmax -40vmax; }
+      50%     { background-size:80vmax  80vmax,110vmax 110vmax; background-position:-50vmax -70vmax,40vmax -30vmax; }
+      75%     { background-size:90vmax  90vmax,90vmax  90vmax;  background-position:-50vmax -40vmax,50vmax -30vmax; }
+    }
+
+    @keyframes bgColor {
+      0%,100% { filter: hue-rotate(0deg)   brightness(1);   }
+      50%     { filter: hue-rotate(-28deg) brightness(1.1); }
+    }
+
+    /* Animated grain GIF — exact goose.gg technique */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 99999;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("assets/noise.gif");
+      background-size: auto;
+      background-repeat: repeat;
+      background-position: 50%;
+      opacity: 0.08;
+      pointer-events: none;
+    }
 </style>
 </head>
 <body>
+
+  <!-- Background glow + grain -->
+  <div id="bg-glow" aria-hidden="true"></div>
+  <div id="bg-grain" aria-hidden="true"></div>
 
   <!-- Rodds-like marquee bar -->
   <div class="marquee-bar" aria-label="Marquee">
     <div class="marquee-eyes" aria-hidden="true">
       <div class="eye"><div class="pupil"></div></div>
       <div class="eye"><div class="pupil"></div></div>
-</div>
+    </div>
 
     <div class="marquee" aria-label="2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES">
       <div class="track">
-        <span class="chunk">2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  </span>
-        <span class="chunk">2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  </span>
-        <span class="chunk">2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  </span>
-        <span class="chunk">2026 MAKSIM SHMELEV * AVAILABLE FOR E-COMMERCE & PRODUCT MANAGEMENT OPPORTUNITIES  ✶  </span>
+        <span class="chunk">2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  AVAILABLE FROM SEPTEMBER 2026  ✶</span>
+        <span class="chunk">2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  AVAILABLE FROM SEPTEMBER 2026  ✶</span>
+        <span class="chunk">2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  AVAILABLE FROM SEPTEMBER 2026  ✶</span>
+        <span class="chunk">2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  AVAILABLE FROM SEPTEMBER 2026  ✶</span>
       </div>
+    </div>
+
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
     </div>
   </div>
 
@@ -1024,51 +1445,112 @@ display: flex;
   <div class="cursor-spotlight" aria-hidden="true"></div>
   <div class="cursor-dot" aria-hidden="true"></div>
 
-  <!-- Main Content (from your EN file) -->
+  <!-- Main Content -->
   <div class="container">
         <header>
-            <h1>MAKSIM SHMELEV</h1>
-            <div class="subtitle">E-COMMERCE SPECIALIST & PRODUCT MANAGER</div>
-            
+            <h1 data-i18n="name">MAKSIM SHMELEV</h1>
+            <div class="subtitle" data-i18n="subtitle">E-COMMERCE SPECIALIST & PRODUCT MANAGER</div>
             <div class="contact-plain">shmelevmaksim4studies@gmail.com  *  +33 777 101 576  *  <a href="https://www.linkedin.com/in/maksim-shmelev/" target="_blank" rel="noopener">LinkedIn</a>  *  Bordeaux, Paris, EU</div>
         </header>
 
         <div class="decorative-line"></div>
 
         <nav>
-            <button class="nav-btn active" data-section="about">ABOUT</button>
-            <button class="nav-btn" data-section="experience">EXPERIENCE</button>
-            <button class="nav-btn" data-section="education">EDUCATION</button>
-            <button class="nav-btn" data-section="skills">SKILLS</button>
-            <button class="nav-btn" data-section="projects">PROJECTS</button>
+            <button class="nav-btn active" data-section="about" data-i18n="nav_about">ABOUT</button>
+            <button class="nav-btn" data-section="experience" data-i18n="nav_experience">EXPERIENCE</button>
+            <button class="nav-btn" data-section="education" data-i18n="nav_education">EDUCATION</button>
+            <button class="nav-btn" data-section="skills" data-i18n="nav_skills">SKILLS</button>
+            <button class="nav-btn" data-section="projects" data-i18n="nav_projects">PROJECTS</button>
         </nav>
 
         <!-- About Section -->
         <section class="content-section active" id="about">
-            <h2 class="section-title">>>> ABOUT</h2>
+            <div class="item" style="padding:0; border:none; background:none;">
+                <div class="photo-strip photo-strip--about" id="strip-about">
+                    <div class="photo-card photo-card--about"><img src="assets/photo_2026-05-20_18-40-12.jpg" alt="Maksim Shmelev"></div>
+                    <div class="photo-card photo-card--about"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                    <div class="photo-card photo-card--about"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                    <div class="photo-card photo-card--about"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                    <div class="photo-card photo-card--about"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                </div>
+            </div>
             <div class="item">
-                <div class="item-description">
-                    <p>I am currently looking for an internship in <strong>Marketing</strong> and <strong>E‑commerce</strong>.</p>
-                    <p>I have experience with marketplace management (SEO + ads), analytics (GA4/reporting), and product execution. Open to opportunities in France or remote.</p>
-
-
+                <div class="item-description" data-i18n="about_body">
+                    <p>Currently working as <strong>Bras Droit du CEO</strong> at <strong>Atelier Box</strong>, Paris. Building an internal Shopify system for sales management and supplier selection, and optimizing supplier data. Not actively looking for new opportunities until September 2026.</p>
+                    <p>I have experience with marketplace management (SEO + ads), analytics (GA4/reporting), and product execution. Open to opportunities in France or remote from September.</p>
                     <p><strong>Resume:</strong> <a class="doc-link" href="assets/CV_Maksim_Shmelev.pdf" target="_blank" rel="noopener">Download resume (PDF)</a></p>
-
-</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-title" data-i18n="why_title">WHY MARKETING?</div>
+                <div class="item-description" style="margin-top:12px" data-i18n="why_body">
+                    <p>It's simple — marketing helps customers find the products they need. And I want to be the one who helps businesses find their customers.</p>
+                </div>
+            </div>
+            <div class="item journey-item">
+                <div class="journey-track">
+                    <div class="journey-stop">
+                        <div class="journey-dot"></div>
+                        <div class="journey-city" data-i18n="journey_1">Ivanovo</div>
+                        <div class="journey-sub" data-i18n="journey_1s">Born & raised</div>
+                    </div>
+                    <div class="journey-line"></div>
+                    <div class="journey-stop">
+                        <div class="journey-dot"></div>
+                        <div class="journey-city" data-i18n="journey_2">Moscow</div>
+                        <div class="journey-sub" data-i18n="journey_2s">University</div>
+                    </div>
+                    <div class="journey-line"></div>
+                    <div class="journey-stop">
+                        <div class="journey-dot"></div>
+                        <div class="journey-city" data-i18n="journey_3">Bordeaux</div>
+                        <div class="journey-sub" data-i18n="journey_3s">Master's</div>
+                    </div>
+                    <div class="journey-line"></div>
+                    <div class="journey-stop active">
+                        <div class="journey-dot"></div>
+                        <div class="journey-city" data-i18n="journey_4">Paris</div>
+                        <div class="journey-sub" data-i18n="journey_4s">Now</div>
+                    </div>
+                    <div class="journey-line"></div>
+                    <div class="journey-stop upcoming">
+                        <div class="journey-dot"></div>
+                        <div class="journey-city" data-i18n="journey_5">Lille</div>
+                        <div class="journey-sub" data-i18n="journey_5s">Soon</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Experience Section -->
         <section class="content-section" id="experience">
-            <h2 class="section-title">>>> EXPERIENCE</h2>
-            
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">PRODUCT MANAGER</div>
-                    <div class="item-date">FEB 2025 - AUG 2025</div>
+                    <div class="item-title">BRAS DROIT DU CEO</div>
+                    <div class="item-date" data-i18n="exp_atelier_date">MAY 2026 - PRESENT</div>
+                </div>
+                <div class="item-subtitle">Atelier Box — Paris</div>
+                <ul class="item-description" data-i18n="exp_atelier_desc">
+                    <li>Work directly with the CEO on strategic priorities, operations, and business development</li>
+                    <li>Building an internal Shopify-based system for sales management and supplier selection</li>
+                    <li>Optimizing supplier data and product catalog structure</li>
+                    <li>Coordinate cross-functional projects and ensure execution of key initiatives</li>
+                </ul>
+                <div class="photo-strip" id="strip-atelierbox">
+                  <div class="photo-card"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                  <div class="photo-card"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                  <div class="photo-card"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                  <div class="photo-card"><div class="photo-card__placeholder"><div class="photo-card__icon">📷</div><div class="photo-card__label">Add photo</div></div></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title" data-i18n="exp_pm_title">PRODUCT MANAGER</div>
+                    <div class="item-date" data-i18n="exp_pm_date">FEB 2025 - AUG 2025</div>
                 </div>
                 <div class="item-subtitle">Fuh! - Startup Degree Program</div>
-                <ul class="item-description">
+                <ul class="item-description" data-i18n="exp_pm_desc">
                     <li>Co-launched subscription-based mental health startup, working on go-to-market, branding, and product strategy</li>
                     <li>Analyzed user behavior, engagement, and retention to identify growth and UX issues</li>
                     <li>Drove product improvements by translating user feedback and performance data into actionable changes</li>
@@ -1077,11 +1559,11 @@ display: flex;
 
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">E-COMMERCE INTERN</div>
-                    <div class="item-date">OCT 2024 - FEB 2025</div>
+                    <div class="item-title" data-i18n="exp_intern_title">E-COMMERCE INTERN</div>
+                    <div class="item-date" data-i18n="exp_intern_date">OCT 2024 - FEB 2025</div>
                 </div>
                 <div class="item-subtitle">Socialist LLC</div>
-                <ul class="item-description">
+                <ul class="item-description" data-i18n="exp_intern_desc">
                     <li>Built media plans and performance briefs for Vivienne Sabo, Air Tokyo, and Surf Coffee</li>
                     <li>Increased orders by 21% on Wildberries through SEO keyword optimization</li>
                     <li>Managed end-to-end product publication (content upload, updates, compliance) for clients</li>
@@ -1091,11 +1573,11 @@ display: flex;
 
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">RESEARCHER</div>
-                    <div class="item-date">JUN 2023 - JUN 2024</div>
+                    <div class="item-title" data-i18n="exp_res_title">RESEARCHER</div>
+                    <div class="item-date" data-i18n="exp_res_date">JUN 2023 - JUN 2024</div>
                 </div>
-                <div class="item-subtitle">PRUE - Innovation Management with AI Team</div>
-                <ul class="item-description">
+                <div class="item-subtitle" data-i18n="exp_res_sub">PRUE - Innovation Management with AI Team</div>
+                <ul class="item-description" data-i18n="exp_res_desc">
                     <li>Gathered and cleaned datasets for training and validating analytical research models</li>
                     <li>Analyzed datasets to comply with requirements, compared ML behavior and adjusted settings</li>
                 </ul>
@@ -1104,37 +1586,46 @@ display: flex;
 
         <!-- Education Section -->
         <section class="content-section" id="education">
-            <h2 class="section-title">>>> EDUCATION</h2>
-            
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">MASTER OF SCIENCE, MARKETING</div>
-                    <div class="item-date">SEP 2025 - JUL 2027</div>
+                    <div class="item-title" data-i18n="edu_ieseg_title">MSC DIGITAL MARKETING MANAGEMENT</div>
+                    <div class="item-date" data-i18n="edu_ieseg_date">SEP 2026 - JUL 2028</div>
                 </div>
-                <div class="item-subtitle">KEDGE Business School, Bordeaux</div>
-                <div class="item-description">
-                    Brand & Product Management * Google Analytics * Marketing Decision Making * Data Analytics & AI * Financial Performance
-                </div>
+                <div class="item-subtitle">IESEG School of Management</div>
+                <div class="item-description" data-i18n="edu_ieseg_desc">Digital Marketing Management * upcoming</div>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">BACHELOR OF SCIENCE</div>
-                    <div class="item-date">SEP 2021 - JUL 2025</div>
+                    <div class="item-title" data-i18n="edu_kedge_title">MASTER 1, MARKETING</div>
+                    <div class="item-date" data-i18n="edu_kedge_date">SEP 2025 - JUL 2026</div>
                 </div>
-                <div class="item-subtitle">Plekhanov Russian University of Economics, Moscow</div>
-                <div class="item-description">
-                    Economics & Management (English-taught) * Marketing * Statistics * Econometrics * Product Design * Business Analysis * Data Analytics
+                <div class="item-subtitle">KEDGE Business School, Bordeaux</div>
+                <div class="item-description" data-i18n="edu_kedge_desc">Brand & Product Management * Google Analytics * Marketing Decision Making * Data Analytics & AI * Financial Performance</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title" data-i18n="edu_plekh_title">BACHELOR OF SCIENCE</div>
+                    <div class="item-date" data-i18n="edu_plekh_date">SEP 2021 - JUL 2025</div>
+                </div>
+                <div class="item-subtitle" data-i18n="edu_plekh_sub">Plekhanov Russian University of Economics, Moscow</div>
+                <div class="item-description" data-i18n="edu_plekh_desc">Economics & Management (English-taught) * Marketing * Statistics * Econometrics * Product Design * Business Analysis * Data Analytics</div>
+                <div class="photo-strip" id="strip-plekhanov">
+                  <div class="photo-card"><img src="assets/photo_2026-05-20_18-48-43.jpg" alt="Plekhanov"></div>
+                  <div class="photo-card"><img src="assets/photo_2026-05-20_18-51-06.jpg" alt="Plekhanov"></div>
+                  <div class="photo-card"><img src="assets/photo_2026-05-20_18-52-05.jpg" alt="Plekhanov"></div>
+                  <div class="photo-card"><img src="assets/bc802bb1e8b276fe1511100c1051348f.jpg" alt="Plekhanov"></div>
                 </div>
             </div>
         
             <div class="item">
                 <div class="item-header">
-                    <div class="item-title">ADDITIONAL EDUCATION</div>
-                    <div class="item-date">CERTIFICATES</div>
+                    <div class="item-title" data-i18n="edu_extra_title">ADDITIONAL EDUCATION</div>
+                    <div class="item-date" data-i18n="edu_extra_date">CERTIFICATES</div>
                 </div>
-                <div class="item-subtitle">Download PDFs</div>
-                <ul class="item-description">
+                <div class="item-subtitle" data-i18n="edu_extra_sub">Download PDFs</div>
+                <ul class="item-description" data-i18n="edu_extra_desc">
                     <li><a class="cert-link" href="assets/Yandex.pdf" target="_blank" rel="noopener">Yandex Practicum — Marketplace Manager (256h)</a></li>
                     <li><a class="cert-link" href="assets/Google.pdf" target="_blank" rel="noopener">Google Professional Certificate — Digital Marketing &amp; E‑commerce</a></li>
                     <li><a class="cert-link" href="assets/IELTS.pdf" target="_blank" rel="noopener">IELTS Certificate (PDF)</a></li>
@@ -1144,52 +1635,22 @@ display: flex;
 
         <!-- Skills Section -->
         <section class="content-section" id="skills">
-            <h2 class="section-title">>>> SKILLS</h2>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>E-COMMERCE & MARKETING</h3>
-                    <p>Marketplace ads (bids/budgets/targeting) * KPI analytics (CTR/CVR/ROAS/ACoS) * Pricing & competitor benchmarking * GA4 * SEO optimization</p>
-                </div>
-
-                <div class="skill-category">
-                    <h3>ANALYSIS & TOOLS</h3>
-                    <p>Excel (Advanced) * Data analysis * Google Analytics * Marketing analytics * Performance tracking</p>
-                </div>
-
-                <div class="skill-category">
-                    <h3>SOFT SKILLS</h3>
-                    <p>Time management * Problem solving * Team communication * Product strategy * Project management</p>
-                </div>
-
-                <div class="skill-category">
-                    <h3>LANGUAGES</h3>
-                    <p>Russian (Native) * English (C1, IELTS 7.5) * French (A2)</p>
-                </div>
-
-                <div class="skill-category">
-                    <h3>INTERESTS</h3>
-                    <p>Brand creation * Coding * Gym (Lifting) * Entrepreneurship</p>
-                </div>
-            </div>
+            <div class="skill-wall" id="skill-wall"></div>
         </section>
 
         <!-- Projects Section -->
         <section class="content-section" id="projects">
             
-      <h2 class="section-title">>>> PROJECTS</h2>
       <div class="projects-grid">
         <article class="project-card featured">
   <img class="project-img" src="assets/picture5.png" alt="(Re)Bonjour project preview">
   <div class="project-body">
-    <h3 class="project-title">(Re)Bonjour — Capstone Project</h3>
-    <p class="project-desc">
-      University capstone project where I supported startup Opack in developing and planning its B2B market entry strategy. Worked on marketing research and business improvement for Rebonjour — a recyclable packaging solution.
-    </p>
+    <h3 class="project-title" data-i18n="proj1_title">(Re)Bonjour — Capstone Project</h3>
+    <p class="project-desc" data-i18n="proj1_desc">University capstone project where I supported startup Opack in developing and planning its B2B market entry strategy. Worked on marketing research and business improvement for Rebonjour — a recyclable packaging solution.</p>
     <div class="project-links">
-      <a class="project-link" href="assets/REBonjour_Final_Strategy_Report.pdf" target="_blank" rel="noopener">Strategy Report</a>
-      <a class="project-link" href="assets/REBonjour_Presentation.pdf" target="_blank" rel="noopener">Presentation</a>
-      <a class="project-link" href="https://www.opack.fr/" target="_blank" rel="noopener">Website</a>
+      <a class="project-link" href="assets/REBonjour_Final_Strategy_Report.pdf" target="_blank" rel="noopener" data-i18n="proj_report">Strategy Report</a>
+      <a class="project-link" href="assets/REBonjour_Presentation.pdf" target="_blank" rel="noopener" data-i18n="proj_presentation">Presentation</a>
+      <a class="project-link" href="https://www.opack.fr/" target="_blank" rel="noopener" data-i18n="proj_website">Website</a>
     </div>
   </div>
 </article>
@@ -1197,10 +1658,8 @@ display: flex;
         <article class="project-card featured">
                     <img class="project-img" src="assets/picture3.png" alt="Startup preview">
           <div class="project-body">
-            <h3 class="project-title">Fuh — Mental AI Assistant</h3>
-            <p class="project-desc">
-              Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.
-            </p>
+            <h3 class="project-title" data-i18n="proj2_title">Fuh — Mental AI Assistant</h3>
+            <p class="project-desc" data-i18n="proj2_desc">Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.</p>
             <div class="project-links">
               <a class="project-link" href="assets/fuh.pdf" target="_blank" rel="noopener">fuh.pdf</a>
               <a class="project-link" href="assets/fuh2.pdf" target="_blank" rel="noopener">fuh2.pdf</a>
@@ -1211,10 +1670,8 @@ display: flex;
         <article class="project-card">
                     <img class="project-img" src="assets/picture1.png" alt="Ridekit.fr preview">
           <div class="project-body">            
-            <h3 class="project-title">Ridekit.fr — Gear Finder (Founder) (in development)</h3>
-            <p class="project-desc">
-              Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.
-            </p>
+            <h3 class="project-title" data-i18n="proj3_title">Ridekit.fr — Gear Finder (Founder) (in development)</h3>
+            <p class="project-desc" data-i18n="proj3_desc">Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.</p>
             <div class="project-links">
               <a class="project-link" href="https://ridekit.fr/" target="_blank" rel="noopener">Live</a>
               <a class="project-link" href="https://github.com/aniibi-coder/site-prototype/tree/main" target="_blank" rel="noopener">GitHub</a>
@@ -1225,10 +1682,8 @@ display: flex;
         <article class="project-card">
                     <img class="project-img" src="assets/picture2.png" alt="Marketplace work preview">
           <div class="project-body">
-            <h3 class="project-title">"Juk Alexeevich" clothing brand</h3>
-            <p class="project-desc">
-              For a student project created a clothing brand, which became a real one.
-            </p>
+            <h3 class="project-title" data-i18n="proj4_title">"Juk Alexeevich" clothing brand</h3>
+            <p class="project-desc" data-i18n="proj4_desc">For a student project created a clothing brand, which became a real one.</p>
             <div class="project-links">
               <a class="project-link" href="https://vk.link/jukalexeevich" target="_blank" rel="noopener">VK</a>
             </div>
@@ -1251,7 +1706,7 @@ display: flex;
                             <span>*</span>
                             <a href="https://github.com/aniibi-coder" target="_blank" rel="noopener">GitHub</a></div>
 
-            <p>© 2026 Maksim Shmelev. All rights reserved.</p>
+            <p data-i18n="footer_copy">© 2026 Maksim Shmelev. All rights reserved.</p>
         </footer>
     
 
@@ -1345,6 +1800,349 @@ display: flex;
       projectCards.forEach(c => c.classList.add('active'));
     }
 
+    // ===== Language switcher
+    const TRANSLATIONS = {
+      en: {
+        name:            'MAKSIM SHMELEV',
+        subtitle:        'E-COMMERCE SPECIALIST & PRODUCT MANAGER',
+        nav_about:       'ABOUT', nav_experience: 'EXPERIENCE',
+        nav_education:   'EDUCATION', nav_skills: 'SKILLS', nav_projects: 'PROJECTS',
+        about_title:     '>>> ABOUT',
+        about_body:      `<p>Currently working as <strong>Bras Droit du CEO</strong> at <strong>Atelier Box</strong>, Paris. Building an internal Shopify system for sales management and supplier selection, and optimizing supplier data. Not actively looking for new opportunities until September 2026.</p><p>I have experience with marketplace management (SEO + ads), analytics (GA4/reporting), and product execution. Open to opportunities in France or remote from September.</p><p><strong>Resume:</strong> <a class="doc-link" href="assets/CV_Maksim_Shmelev.pdf" target="_blank" rel="noopener">Download resume (PDF)</a></p>`,
+        why_title:       'WHY MARKETING?',
+        why_body:        `<p>It's simple — marketing helps customers find the products they need. And I want to be the one who helps businesses find their customers.</p>`,
+        exp_title:       '>>> EXPERIENCE',
+        exp_atelier_date:'MAY 2026 - PRESENT',
+        exp_atelier_desc:`<li>Work directly with the CEO on strategic priorities, operations, and business development</li><li>Building an internal Shopify-based system for sales management and supplier selection</li><li>Optimizing supplier data and product catalog structure</li><li>Coordinate cross-functional projects and ensure execution of key initiatives</li>`,
+        exp_pm_title:    'PRODUCT MANAGER', exp_pm_date: 'FEB 2025 - AUG 2025',
+        exp_pm_desc:     `<li>Co-launched subscription-based mental health startup, working on go-to-market, branding, and product strategy</li><li>Analyzed user behavior, engagement, and retention to identify growth and UX issues</li><li>Drove product improvements by translating user feedback and performance data into actionable changes</li>`,
+        exp_intern_title:'E-COMMERCE INTERN', exp_intern_date: 'OCT 2024 - FEB 2025',
+        exp_intern_desc: `<li>Built media plans and performance briefs for Vivienne Sabo, Air Tokyo, and Surf Coffee</li><li>Increased orders by 21% on Wildberries through SEO keyword optimization</li><li>Managed end-to-end product publication (content upload, updates, compliance) for clients</li><li>Optimized marketplace ads (bids/budgets/targeting) and created banners + product cards</li>`,
+        exp_res_title:   'RESEARCHER', exp_res_date: 'JUN 2023 - JUN 2024',
+        exp_res_sub:     'PRUE - Innovation Management with AI Team',
+        exp_res_desc:    `<li>Gathered and cleaned datasets for training and validating analytical research models</li><li>Analyzed datasets to comply with requirements, compared ML behavior and adjusted settings</li>`,
+        edu_title:       '>>> EDUCATION',
+        edu_ieseg_title: 'MSC DIGITAL MARKETING MANAGEMENT', edu_ieseg_date: 'SEP 2026 - JUL 2028',
+        edu_ieseg_desc:  'Digital Marketing Management * upcoming',
+        edu_kedge_title: 'MASTER 1, MARKETING', edu_kedge_date: 'SEP 2025 - JUL 2026',
+        edu_kedge_desc:  'Brand & Product Management * Google Analytics * Marketing Decision Making * Data Analytics & AI * Financial Performance',
+        edu_plekh_title: 'BACHELOR OF SCIENCE', edu_plekh_date: 'SEP 2021 - JUL 2025',
+        edu_plekh_sub:   'Plekhanov Russian University of Economics, Moscow',
+        edu_plekh_desc:  'Economics & Management (English-taught) * Marketing * Statistics * Econometrics * Product Design * Business Analysis * Data Analytics',
+        edu_extra_title: 'ADDITIONAL EDUCATION', edu_extra_date: 'CERTIFICATES',
+        edu_extra_sub:   'Download PDFs',
+        edu_extra_desc:  `<li><a class="cert-link" href="assets/Yandex.pdf" target="_blank" rel="noopener">Yandex Practicum — Marketplace Manager (256h)</a></li><li><a class="cert-link" href="assets/Google.pdf" target="_blank" rel="noopener">Google Professional Certificate — Digital Marketing & E-commerce</a></li><li><a class="cert-link" href="assets/IELTS.pdf" target="_blank" rel="noopener">IELTS Certificate (PDF)</a></li>`,
+        skills_title:    '>>> SKILLS',
+        proj_title:      '>>> PROJECTS',
+        proj1_title:     '(Re)Bonjour — Capstone Project',
+        proj1_desc:      'University capstone project where I supported startup Opack in developing and planning its B2B market entry strategy. Worked on marketing research and business improvement for Rebonjour — a recyclable packaging solution.',
+        proj2_title:     'Fuh — Mental AI Assistant',
+        proj2_desc:      'Co-founded a subscription mental-health assistant. Built financial model, budget allocation and helped with IT delivery.',
+        proj3_title:     'Ridekit.fr — Gear Finder (Founder) (in development)',
+        proj3_desc:      'Interactive gear recommendation flow for beginner skiers/snowboarders with affiliate links.',
+        proj4_title:     '"Juk Alexeevich" clothing brand',
+        proj4_desc:      'For a student project created a clothing brand, which became a real one.',
+        proj_report:     'Strategy Report', proj_presentation: 'Presentation', proj_website: 'Website',
+        journey_1: 'Ivanovo', journey_1s: 'Born & raised',
+        journey_2: 'Moscow',  journey_2s: 'Bachelor · Internship',
+        journey_3: 'Bordeaux',journey_3s: "Master's",
+        journey_4: 'Paris',   journey_4s: 'Bras Droit du CEO',
+        journey_5: 'Lille',   journey_5s: 'MSc · Soon',
+        footer_copy:     '© 2026 Maksim Shmelev. All rights reserved.',
+      },
+      fr: {
+        name:            'MAKSIM SHMELEV',
+        subtitle:        'SPÉCIALISTE E-COMMERCE & CHEF DE PRODUIT',
+        nav_about:       'À PROPOS', nav_experience: 'EXPÉRIENCE',
+        nav_education:   'FORMATION', nav_skills: 'COMPÉTENCES', nav_projects: 'PROJETS',
+        about_title:     '>>> À PROPOS',
+        about_body:      `<p>Actuellement <strong>Bras Droit du CEO</strong> chez <strong>Atelier Box</strong>, Paris. Je développe un système interne sur Shopify pour la gestion des ventes et la sélection des fournisseurs, et j'optimise les données fournisseurs. <u>Je ne recherche pas activement de nouvelles opportunités avant septembre 2026.</u></p><p>J'ai de l'expérience en gestion de marketplaces (SEO + publicités), analytics (GA4/reporting) et exécution produit. Ouvert aux opportunités en France ou en remote à partir de septembre.</p><p><strong>CV :</strong> <a class="doc-link" href="assets/CV_Maksim_Shmelev.pdf" target="_blank" rel="noopener">Télécharger le CV (PDF)</a></p>`,
+        why_title:       'POURQUOI LE MARKETING ?',
+        why_body:        `<p>C'est simple — le marketing aide les clients à trouver les produits dont ils ont besoin. Et je veux être celui qui aide les entreprises à trouver leurs clients.</p>`,
+        exp_title:       '>>> EXPÉRIENCE',
+        exp_atelier_date:'MAI 2026 - PRÉSENT',
+        exp_atelier_desc:`<li>Travaille directement avec le CEO sur les priorités stratégiques, les opérations et le développement commercial</li><li>Développement d'un système interne sur Shopify pour la gestion des ventes et la sélection des fournisseurs</li><li>Optimisation des données fournisseurs et de la structure du catalogue produit</li><li>Coordonne les projets transversaux et assure l'exécution des initiatives clés</li>`,
+        exp_pm_title:    'CHEF DE PRODUIT', exp_pm_date: 'FÉV. 2025 - AOÛT 2025',
+        exp_pm_desc:     `<li>Co-fondé une startup de santé mentale par abonnement, travaillant sur le go-to-market, le branding et la stratégie produit</li><li>Analysé le comportement des utilisateurs, l'engagement et la rétention pour identifier les problèmes de croissance et d'UX</li><li>Piloté les améliorations produit en transformant les retours utilisateurs et les données en actions concrètes</li>`,
+        exp_intern_title:'STAGIAIRE E-COMMERCE', exp_intern_date: 'OCT. 2024 - FÉV. 2025',
+        exp_intern_desc: `<li>Créé des plans médias et briefs de performance pour Vivienne Sabo, Air Tokyo et Surf Coffee</li><li>Augmenté les commandes de 21% sur Wildberries grâce à l'optimisation SEO</li><li>Géré la publication produit de bout en bout (upload de contenu, mises à jour, conformité) pour les clients</li><li>Optimisé les publicités marketplace (enchères/budgets/ciblage) et créé des bannières + fiches produit</li>`,
+        exp_res_title:   'CHERCHEUR', exp_res_date: 'JUIN 2023 - JUIN 2024',
+        exp_res_sub:     'PRUE - Équipe Innovation Management & IA',
+        exp_res_desc:    `<li>Collecté et nettoyé des jeux de données pour l'entraînement et la validation de modèles de recherche analytique</li><li>Analysé les datasets, comparé le comportement des modèles ML et ajusté les paramètres</li>`,
+        edu_title:       '>>> FORMATION',
+        edu_ieseg_title: 'MSC MARKETING DIGITAL MANAGEMENT', edu_ieseg_date: 'SEPT. 2026 - JUIL. 2028',
+        edu_ieseg_desc:  'Management du Marketing Digital * à venir',
+        edu_kedge_title: 'MASTER 1, MARKETING', edu_kedge_date: 'SEPT. 2025 - JUIL. 2026',
+        edu_kedge_desc:  'Brand & Product Management * Google Analytics * Décision Marketing * Data Analytics & IA * Performance Financière',
+        edu_plekh_title: 'LICENCE EN SCIENCES ÉCONOMIQUES', edu_plekh_date: 'SEPT. 2021 - JUIL. 2025',
+        edu_plekh_sub:   'Université Économique Plekhanov, Moscou',
+        edu_plekh_desc:  'Économie & Management (enseigné en anglais) * Marketing * Statistiques * Économétrie * Design Produit * Analyse Business * Data Analytics',
+        edu_extra_title: 'FORMATION COMPLÉMENTAIRE', edu_extra_date: 'CERTIFICATS',
+        edu_extra_sub:   'Télécharger les PDF',
+        edu_extra_desc:  `<li><a class="cert-link" href="assets/Yandex.pdf" target="_blank" rel="noopener">Yandex Practicum — Gestionnaire Marketplace (256h)</a></li><li><a class="cert-link" href="assets/Google.pdf" target="_blank" rel="noopener">Certificat Professionnel Google — Marketing Digital & E-commerce</a></li><li><a class="cert-link" href="assets/IELTS.pdf" target="_blank" rel="noopener">Certificat IELTS (PDF)</a></li>`,
+        skills_title:    '>>> COMPÉTENCES',
+        proj_title:      '>>> PROJETS',
+        proj1_title:     '(Re)Bonjour — Projet Capstone',
+        proj1_desc:      'Projet de fin d\'études où j\'ai accompagné la startup Opack dans le développement de sa stratégie d\'entrée sur le marché B2B. Travail sur la recherche marketing et l\'amélioration business pour Rebonjour — une solution d\'emballage recyclable.',
+        proj2_title:     'Fuh — Assistant IA Bien-être',
+        proj2_desc:      'Co-fondé un assistant de santé mentale par abonnement. Construit le modèle financier, l\'allocation budgétaire et contribué à la livraison technique.',
+        proj3_title:     'Ridekit.fr — Trouveur d\'Équipement (Fondateur) (en développement)',
+        proj3_desc:      'Parcours de recommandation d\'équipement interactif pour débutants en ski/snowboard avec liens affiliés.',
+        proj4_title:     'Marque de vêtements "Juk Alexeevich"',
+        proj4_desc:      'Créé pour un projet étudiant, cette marque de vêtements est devenue une vraie marque.',
+        proj_report:     'Rapport Stratégique', proj_presentation: 'Présentation', proj_website: 'Site Web',
+        journey_1: 'Ivanovo', journey_1s: 'Né et grandi',
+        journey_2: 'Moscou',  journey_2s: 'Licence · Stage',
+        journey_3: 'Bordeaux',journey_3s: 'Master',
+        journey_4: 'Paris',   journey_4s: 'Bras Droit du CEO',
+        journey_5: 'Lille',   journey_5s: 'MSc · Bientôt',
+        footer_copy:     '© 2026 Maksim Shmelev. Tous droits réservés.',
+      },
+      ru: {
+        name:            'МАКСИМ ШМЕЛЕВ',
+        subtitle:        'ЭЛЕКТРОННАЯ КОММЕРЦИЯ & ПРОДАКТ-МЕНЕДЖМЕНТ',
+        nav_about:       'ОБО МНЕ', nav_experience: 'ОПЫТ',
+        nav_education:   'ОБРАЗОВАНИЕ', nav_skills: 'НАВЫКИ', nav_projects: 'ПРОЕКТЫ',
+        about_title:     '>>> ОБО МНЕ',
+        about_body:      `<p>Сейчас работаю <strong>Bras Droit du CEO</strong> в <strong>Atelier Box</strong>, Париж. Разрабатываю внутреннюю систему на Shopify для управления продажами и выбора поставщиков, оптимизирую данные поставщиков. Активно не ищу новые возможности до сентября 2026.</p><p>Опыт в управлении маркетплейсами (SEO + реклама), аналитике (GA4/отчётность) и продуктовом менеджменте. Открыт к предложениям во Франции или удалённо с сентября.</p><p><strong>Резюме:</strong> <a class="doc-link" href="assets/CV_Maksim_Shmelev.pdf" target="_blank" rel="noopener">Скачать резюме (PDF)</a></p>`,
+        why_title:       'ПОЧЕМУ МАРКЕТИНГ?',
+        why_body:        `<p>Всё просто — маркетинг помогает покупателям найти нужные товары. И я хочу быть тем, кто помогает бизнесу находить своих клиентов.</p>`,
+        exp_title:       '>>> ОПЫТ',
+        exp_atelier_date:'МАЙ 2026 — НАСТОЯЩЕЕ ВРЕМЯ',
+        exp_atelier_desc:`<li>Работаю напрямую с CEO по стратегическим приоритетам, операциям и развитию бизнеса</li><li>Разрабатываю внутреннюю систему на Shopify для управления продажами и выбора поставщиков</li><li>Оптимизирую данные поставщиков и структуру продуктового каталога</li><li>Координирую кросс-функциональные проекты и обеспечиваю выполнение ключевых инициатив</li>`,
+        exp_pm_title:    'ПРОДАКТ-МЕНЕДЖЕР', exp_pm_date: 'ФЕВ 2025 — АВГ 2025',
+        exp_pm_desc:     `<li>Со-основал стартап в сфере ментального здоровья, работал над go-to-market, брендингом и продуктовой стратегией</li><li>Анализировал поведение пользователей, вовлечённость и удержание для выявления проблем роста и UX</li><li>Переводил обратную связь и данные в конкретные улучшения продукта</li>`,
+        exp_intern_title:'СТАЖЁР E-COMMERCE', exp_intern_date: 'ОКТ 2024 — ФЕВ 2025',
+        exp_intern_desc: `<li>Составлял медиапланы и перформанс-брифы для Vivienne Sabo, Air Tokyo и Surf Coffee</li><li>Увеличил заказы на 21% на Wildberries через SEO-оптимизацию</li><li>Управлял публикацией товаров от начала до конца для клиентов</li><li>Оптимизировал рекламу на маркетплейсах и создавал баннеры и карточки товаров</li>`,
+        exp_res_title:   'ИССЛЕДОВАТЕЛЬ', exp_res_date: 'ИЮН 2023 — ИЮН 2024',
+        exp_res_sub:     'РЭУ — Команда управления инновациями с ИИ',
+        exp_res_desc:    `<li>Собирал и очищал датасеты для обучения и валидации аналитических моделей</li><li>Анализировал датасеты, сравнивал поведение ML-моделей и настраивал параметры</li>`,
+        edu_title:       '>>> ОБРАЗОВАНИЕ',
+        edu_ieseg_title: 'MSC УПРАВЛЕНИЕ ЦИФРОВЫМ МАРКЕТИНГОМ', edu_ieseg_date: 'СЕН 2026 — ИЮЛ 2028',
+        edu_ieseg_desc:  'Управление цифровым маркетингом * предстоящее',
+        edu_kedge_title: 'МАГИСТРАТУРА 1, МАРКЕТИНГ', edu_kedge_date: 'СЕН 2025 — ИЮЛ 2026',
+        edu_kedge_desc:  'Бренд и продакт-менеджмент * Google Analytics * Маркетинговые решения * Data Analytics & AI * Финансовая эффективность',
+        edu_plekh_title: 'БАКАЛАВР ЭКОНОМИЧЕСКИХ НАУК', edu_plekh_date: 'СЕН 2021 — ИЮЛ 2025',
+        edu_plekh_sub:   'РЭУ им. Плеханова, Москва',
+        edu_plekh_desc:  'Экономика и менеджмент (на английском) * Маркетинг * Статистика * Эконометрика * Продуктовый дизайн * Бизнес-анализ * Data Analytics',
+        edu_extra_title: 'ДОПОЛНИТЕЛЬНОЕ ОБРАЗОВАНИЕ', edu_extra_date: 'СЕРТИФИКАТЫ',
+        edu_extra_sub:   'Скачать PDF',
+        edu_extra_desc:  `<li><a class="cert-link" href="assets/Yandex.pdf" target="_blank" rel="noopener">Яндекс Практикум — Менеджер маркетплейсов (256ч)</a></li><li><a class="cert-link" href="assets/Google.pdf" target="_blank" rel="noopener">Профессиональный сертификат Google — Цифровой маркетинг и E-commerce</a></li><li><a class="cert-link" href="assets/IELTS.pdf" target="_blank" rel="noopener">Сертификат IELTS (PDF)</a></li>`,
+        skills_title:    '>>> НАВЫКИ',
+        proj_title:      '>>> ПРОЕКТЫ',
+        proj1_title:     '(Re)Bonjour — Дипломный проект',
+        proj1_desc:      'Дипломный проект, в котором я помогал стартапу Opack разработать стратегию выхода на B2B-рынок. Работа над маркетинговым исследованием и улучшением бизнеса для Rebonjour — решения по переработке упаковки.',
+        proj2_title:     'Fuh — ИИ-ассистент для ментального здоровья',
+        proj2_desc:      'Со-основал подписной ассистент для ментального здоровья. Построил финансовую модель, распределение бюджета и помогал с IT-разработкой.',
+        proj3_title:     'Ridekit.fr — Подборщик снаряжения (Основатель) (в разработке)',
+        proj3_desc:      'Интерактивный подбор снаряжения для начинающих лыжников и сноубордистов с партнёрскими ссылками.',
+        proj4_title:     'Бренд одежды "Жук Алексеевич"',
+        proj4_desc:      'Создан как студенческий проект, который стал настоящим брендом.',
+        proj_report:     'Стратегический отчёт', proj_presentation: 'Презентация', proj_website: 'Сайт',
+        journey_1: 'Иваново', journey_1s: 'Родился и вырос',
+        journey_2: 'Москва',  journey_2s: 'Бакалавр · Стажировка',
+        journey_3: 'Бордо',   journey_3s: 'Магистратура',
+        journey_4: 'Париж',   journey_4s: 'Bras Droit du CEO',
+        journey_5: 'Лилль',   journey_5s: 'MSc · Скоро',
+        footer_copy: '© 2026 Максим Шмелев. Все права защищены.',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function applyLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+
+      // Update data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang][key] !== undefined)
+          el.innerHTML = TRANSLATIONS[lang][key];
+      });
+
+      // Update buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Update <html lang>
+      document.documentElement.lang = lang;
+
+      // Update marquee text
+      const marqueeText = lang === 'fr'
+        ? '2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  DISPONIBLE À PARTIR DE SEPTEMBRE 2026  ✶'
+        : lang === 'ru'
+        ? '2026 МАКСИМ ШМЕЛЕВ  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  ОТКРЫТ К ПРЕДЛОЖЕНИЯМ С СЕНТЯБРЯ 2026  ✶'
+        : '2026 MAKSIM SHMELEV  ✶  BRAS DROIT DU CEO @ ATELIER BOX  ✶  AVAILABLE FROM SEPTEMBER 2026  ✶';
+      document.querySelectorAll('.marquee .chunk').forEach(c => c.textContent = marqueeText);
+    }
+
+    // Init
+    applyLang(currentLang);
+
+    // Button clicks
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    // ===== Smart photo strips — hide empty slots, center if single
+    document.querySelectorAll('.photo-strip').forEach(strip => {
+      const cards = Array.from(strip.querySelectorAll('.photo-card'));
+      const filled = cards.filter(c => c.querySelector('img'));
+      const empty  = cards.filter(c => !c.querySelector('img'));
+
+      // Hide empty placeholder cards
+      empty.forEach(c => c.style.display = 'none');
+
+      // If only 1 photo — center it, no scroll needed
+      if (filled.length === 1) {
+        strip.style.justifyContent = 'center';
+        strip.style.overflow = 'hidden';
+      }
+    });
+
+    // ===== Drag-to-scroll + swipe photo strips
+    document.querySelectorAll('.photo-strip').forEach(strip => {
+      // Disable native image drag inside strip
+      strip.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+
+      // Mouse drag
+      let isDown = false, startX, scrollLeft;
+      strip.addEventListener('mousedown', e => {
+        e.preventDefault();
+        isDown = true;
+        startX = e.pageX - strip.offsetLeft;
+        scrollLeft = strip.scrollLeft;
+        strip.style.cursor = 'grabbing';
+      });
+      const stopDrag = () => {
+        if (!isDown) return;
+        isDown = false;
+        strip.style.cursor = '';
+      };
+      strip.addEventListener('mouseleave', stopDrag);
+      strip.addEventListener('mouseup', stopDrag);
+      strip.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const walk = (e.pageX - strip.offsetLeft - startX) * 1;
+        strip.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch swipe
+      let touchStartX = 0, touchScrollLeft = 0;
+      strip.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].pageX;
+        touchScrollLeft = strip.scrollLeft;
+      }, { passive: true });
+      strip.addEventListener('touchmove', e => {
+        const diff = touchStartX - e.touches[0].pageX;
+        strip.scrollLeft = touchScrollLeft + diff;
+      }, { passive: true });
+    });
+
+    // ===== Skills wall
+    (function(){
+      const wall = document.getElementById('skill-wall');
+      if (!wall) return;
+
+      const skillsByLang = {
+        en: [
+          'Marketplace Ads','SEO Optimization','GA4','CTR / CVR / ROAS','ACoS',
+          'Pricing Strategy','Competitor Benchmarking','Media Planning','Performance Briefs',
+          'Excel Advanced','Data Analysis','Google Analytics','Marketing Analytics',
+          'Performance Tracking','KPI Reporting','Product Strategy','Project Management',
+          'Time Management','Problem Solving','Team Communication','Stakeholder Management',
+          'Go-to-Market','Branding','User Behavior Analysis','Retention','UX Feedback',
+          'Russian — Native','English — C1','French — B1',
+          'Brand Creation','Vibe Coding','Entrepreneurship','Gym','Shopify'
+        ],
+        fr: [
+          'Publicités Marketplace','Optimisation SEO','GA4','CTR / CVR / ROAS','ACoS',
+          'Stratégie Tarifaire','Veille Concurrentielle','Planification Médias','Briefs Performance',
+          'Excel Avancé','Analyse de Données','Google Analytics','Analytics Marketing',
+          'Suivi Performance','Reporting KPI','Stratégie Produit','Gestion de Projet',
+          'Gestion du Temps','Résolution de Problèmes','Communication','Gestion Parties Prenantes',
+          'Go-to-Market','Branding','Analyse Comportement','Rétention','Feedback UX',
+          'Russe — Natif','Anglais — C1','Français — B1',
+          'Création de Marque','Vibe Coding','Entrepreneuriat','Gym','Shopify'
+        ],
+        ru: [
+          'Реклама на маркетплейсах','SEO-оптимизация','GA4','CTR / CVR / ROAS','ACoS',
+          'Стратегия ценообразования','Анализ конкурентов','Медиапланирование','Перформанс-брифы',
+          'Excel продвинутый','Анализ данных','Google Analytics','Маркетинговая аналитика',
+          'Отслеживание KPI','Отчётность','Продуктовая стратегия','Управление проектами',
+          'Тайм-менеджмент','Решение проблем','Командная работа','Управление стейкхолдерами',
+          'Go-to-Market','Брендинг','Анализ поведения','Удержание','UX-фидбек',
+          'Русский — родной','Английский — C1','Французский — B1',
+          'Создание бренда','Вайб-кодинг','Предпринимательство','Спортзал','Shopify'
+        ]
+      };
+
+      function buildWall(lang) {
+        wall.innerHTML = '';
+        const skills = skillsByLang[lang] || skillsByLang.en;
+        skills.forEach(s => {
+          const el = document.createElement('span');
+          el.className = 'skill-tag';
+          el.textContent = s;
+          el.style.opacity = '0.38';
+          wall.appendChild(el);
+        });
+        return Array.from(wall.querySelectorAll('.skill-tag'));
+      }
+
+      // Initial render
+      let tags = buildWall(localStorage.getItem('lang') || 'en');
+
+      const palette = [
+        '#ff8a00', '#e8320a', '#ff4500',
+        '#c0392b', '#ff6b35', '#d4a017',
+        '#b8860b', '#cc5500', '#e55a00'
+      ];
+
+      // Shuffle helper
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      // Fair queue: every tag lights up once before any repeats
+      let queue = shuffle(tags);
+
+      function pulse() {
+        if (queue.length === 0) queue = shuffle(tags);
+        const count = 1 + Math.floor(Math.random() * 2);
+        const picks = queue.splice(0, count);
+        picks.forEach(t => {
+          const col = palette[Math.floor(Math.random() * palette.length)];
+          t.style.color = col;
+          t.classList.add('lit');
+          const dur = 900 + Math.random() * 700;
+          setTimeout(() => {
+            t.classList.remove('lit');
+            t.style.color = '';
+          }, dur);
+        });
+      }
+
+      setInterval(pulse, 400);
+
+      // Rebuild wall on language change
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          tags = buildWall(lang);
+          queue = shuffle(tags);
+        });
+      });
+    })();
+
     // ===== Consent banner logic (GA4 Consent Mode v2) =====
     const consentBanner = document.getElementById('consentBanner');
     const consentAccept = document.getElementById('consentAccept');
@@ -1416,6 +2214,7 @@ display: flex;
     }
 
 </script>
+
 </body>
 </html>
 
